@@ -3,3 +3,7 @@ django~=4.1
 
 # Health Check
 django-health-check~=3.17
+
+# Server
+gunicorn~=20.1
+uvicorn~=0.18

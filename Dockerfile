@@ -10,4 +10,4 @@ RUN pip install -r ./requirements.txt
 COPY ./src ./
 
 # Run the server with gunicorn when the server starts
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "app.asgi:application", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:80"]
