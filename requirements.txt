@@ -1,5 +1,7 @@
 # Django
 django~=4.1
+djangorestframework~=3.14
+django-cors-headers~=3.13
 
 # Health Check
 django-health-check~=3.17
@@ -7,3 +9,7 @@ django-health-check~=3.17
 # Server
 gunicorn~=20.1
 uvicorn~=0.18
+channels[daphne]~=4.0
+
+# Utils
+shortuuid~=1.0
