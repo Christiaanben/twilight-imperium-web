@@ -5,11 +5,21 @@ services:
     image: redis:5-alpine
     ports:
       - '6379:6379'
+      
+  db:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
   
   web:
     build:
       context: .
     container_name: twilight-imperium-web
+    env_file:
+      - environments/docker.env
     volumes:
       - ./src:/app
     ports:
