@@ -6,10 +6,12 @@ django-cors-headers~=3.13
 # Health Check
 django-health-check~=3.17
 
-# Server
-gunicorn~=20.1
-uvicorn~=0.18
+# Environment
+django-environ~=0.9
+
+# Channels & Servers
 channels[daphne]~=4.0
+channels-redis~=4.0
 
 # Utils
 shortuuid~=1.0

@@ -10,20 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
-
+from .environment import env, BASE_DIR
 from .apps import INSTALLED_APPS
 from .channels import CHANNEL_LAYERS
 from .rest_framework import REST_FRAMEWORK
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^&s5&7p!3!+w5p^x&37ekm!@y6!zz74-o)$gr%^y72on_!2$rn'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

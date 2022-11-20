@@ -1,6 +1,11 @@
 version: '3'
 
 services:
+  redis:
+    image: redis:5-alpine
+    ports:
+      - '6379:6379'
+  
   web:
     build:
       context: .
@@ -8,4 +13,4 @@ services:
     volumes:
       - ./src:/app
     ports:
-      - '80:80'
+      - '8000:80'
