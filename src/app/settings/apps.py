@@ -20,7 +20,6 @@ third_party_apps = [
     'health_check.db',
     'health_check.contrib.migrations',
     'health_check.cache',
-    'health_check.contrib.redis',
 ]
 
 project_apps = [
