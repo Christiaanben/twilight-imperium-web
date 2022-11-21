@@ -15,6 +15,7 @@ from .apps import INSTALLED_APPS
 from .channels import CHANNEL_LAYERS
 from .rest_framework import REST_FRAMEWORK
 from .database import DATABASES
+from .cache import CACHES
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
