@@ -18,3 +18,6 @@ channels-redis~=4.0
 
 # Utils
 shortuuid~=1.0
+
+# Development
+ipython~=8.6
