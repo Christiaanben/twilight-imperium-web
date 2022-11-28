@@ -25,7 +25,7 @@ class GameConsumer(AsyncWebsocketConsumer):
         Else add them to the lobby and let everyone in the lobby know of the new player
         """
         print('handling new or returning user', data)
-        await self.send(text_data=json.dumps({'new_player': 'John'}))
+        await self.send(text_data=json.dumps({'event': 'new_player', 'player': 'John'}))
 
     async def disconnect(self, close_code):
         # Leave room group
