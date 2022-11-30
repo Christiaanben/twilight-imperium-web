@@ -3,6 +3,9 @@ django~=4.1
 djangorestframework~=3.14
 django-cors-headers~=3.13
 
+# DB
+psycopg2~=2.9
+
 # Health Check
 django-health-check~=3.17
 
@@ -15,3 +18,6 @@ channels-redis~=4.0
 
 # Utils
 shortuuid~=1.0
+
+# Development
+ipython~=8.6

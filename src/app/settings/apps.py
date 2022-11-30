@@ -17,6 +17,9 @@ third_party_apps = [
     'corsheaders',
     # Health Check
     'health_check',
+    'health_check.db',
+    'health_check.contrib.migrations',
+    'health_check.cache',
 ]
 
 project_apps = [
