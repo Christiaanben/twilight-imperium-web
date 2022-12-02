@@ -65,7 +65,7 @@ jobs:
     - name: Run Tests
       working-directory: ./src
       run: |
-        python src/manage.py test
+        python manage.py test
         
   deploy:
     name: Deploy
