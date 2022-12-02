@@ -24,6 +24,7 @@ third_party_apps = [
 
 project_apps = [
     'game',
+    'user',
 ]
 
 INSTALLED_APPS = server_apps + django_apps + third_party_apps + project_apps
