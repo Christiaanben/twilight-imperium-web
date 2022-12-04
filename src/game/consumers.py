@@ -29,6 +29,19 @@ class GameConsumer(AsyncWebsocketConsumer):
         else:
             await self.close(code=status.HTTP_401_UNAUTHORIZED)
 
+    async def disconnect(self, close_code):
+        # Leave room group
+        await self.channel_layer.group_discard(self.lobby_channel, self.channel_name)
+
+    # Receive message from WebSocket
+    async def receive(self, text_data=None, bytes_data=None):
+        data = json.loads(text_data)
+
+        # Send message to room group
+        await self.channel_layer.group_send(
+            self.lobby_channel, data
+        )
+
     async def handle_new_or_returning_player(self, data):
         """
         If the user is new to the lobby, add them to the lobby (if there's space) and let everyone know.
@@ -38,19 +51,8 @@ class GameConsumer(AsyncWebsocketConsumer):
         for event in events:
             await self.send(text_data=json.dumps(event))
 
-    async def disconnect(self, close_code):
-        # Leave room group
-        await self.channel_layer.group_discard(self.lobby_channel, self.channel_name)
-
-    # Receive message from WebSocket
-    async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        message = text_data_json['message']
-
-        # Send message to room group
-        await self.channel_layer.group_send(
-            self.lobby_channel, {'type': 'chat_message', 'message': message}
-        )
+    async def update_player(self, data):
+        await self.send(text_data=json.dumps(data))
 
     # Receive message from room group
     async def chat_message(self, event):

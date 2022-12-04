@@ -15,6 +15,11 @@ def handle_new_or_returning_player(user: User, lobby_id: str):
     player, created = Player.objects.get_or_create(lobby_id=lobby_id, user=user)
     if not created:
         return []
-    return [{'event': 'new_player', 'kwargs': {
-        'player': PlayerSerializer(player).data
-    }}]
+    return [
+        {
+            'type': 'new_player',
+            'kwargs': {
+                'player': PlayerSerializer(player).data
+            }
+        }
+    ]
