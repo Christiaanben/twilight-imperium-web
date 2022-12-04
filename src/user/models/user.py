@@ -10,7 +10,7 @@ class UserManager(auth_models.BaseUserManager):
 
         return user
 
-    def create_super_user(self, email: str, password: str, **kwargs) -> "User":
+    def create_superuser(self, email: str, password: str, **kwargs) -> "User":
         kwargs.setdefault('is_staff', True)
         kwargs.setdefault('is_superuser', True)
         kwargs.setdefault('is_active', True)
