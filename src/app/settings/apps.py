@@ -15,6 +15,7 @@ third_party_apps = [
     'rest_framework',
     'channels',
     'corsheaders',
+    'django_extensions',
     # Health Check
     'health_check',
     'health_check.db',
