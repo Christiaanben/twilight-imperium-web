@@ -1,35 +1,46 @@
 import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
+from rest_framework import status
+
+from game.helpers import lobby_helper
 
 
 class GameConsumer(AsyncWebsocketConsumer):
+    def __init__(self, *args, **kwargs):
+        super().__init__(args, kwargs)
+        self.lobby_id = None
+        self.user = None
+        self.lobby_channel = None
+
     async def connect(self):
-        lobby_id = self.scope['url_route']['kwargs']['lobby_id']
-        self.room_group_name = 'chat_%s' % lobby_id
+        self.lobby_id = self.scope['url_route']['kwargs']['lobby_id']
+        self.lobby_channel = f'lobby_{self.lobby_id}'
+        self.user = self.scope['user']
 
         # Join room group
-        await self.channel_layer.group_add(self.room_group_name, self.channel_name)
+        await self.channel_layer.group_add(self.lobby_channel, self.channel_name)
 
-        await self.accept()
-        print('self.user', self.scope['user'])
-
-        # Send message to room group
-        await self.channel_layer.group_send(
-            self.room_group_name, {'type': 'handle_new_or_returning_player', 'user': 'John'}
-        )
+        if self.user.is_authenticated:
+            await self.accept()
+            await self.channel_layer.group_send(
+                self.lobby_channel, {'type': 'handle_new_or_returning_player', 'user': 'John'}
+            )
+        else:
+            await self.close(code=status.HTTP_401_UNAUTHORIZED)
 
     async def handle_new_or_returning_player(self, data):
         """
-        Checks if the user is signed in. Then, if they are already a part of the lobby do nothing (or update presence).
-        Else add them to the lobby and let everyone in the lobby know of the new player
+        If the user is new to the lobby, add them to the lobby (if there's space) and let everyone know.
+        Else do nothing (or just update presence).
         """
-        print('handling new or returning user', data)
-        await self.send(text_data=json.dumps({'event': 'new_player', 'player': 'John'}))
+        events = await lobby_helper.handle_new_or_returning_player(self.user, self.lobby_id)
+        for event in events:
+            await self.send(text_data=json.dumps(event))
 
     async def disconnect(self, close_code):
         # Leave room group
-        await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
+        await self.channel_layer.group_discard(self.lobby_channel, self.channel_name)
 
     # Receive message from WebSocket
     async def receive(self, text_data):
@@ -38,7 +49,7 @@ class GameConsumer(AsyncWebsocketConsumer):
 
         # Send message to room group
         await self.channel_layer.group_send(
-            self.room_group_name, {'type': 'chat_message', 'message': message}
+            self.lobby_channel, {'type': 'chat_message', 'message': message}
         )
 
     # Receive message from room group
