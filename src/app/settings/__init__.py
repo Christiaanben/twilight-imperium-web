@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from .environment import env, BASE_DIR  # Must be 1st import
+from .logging import logger, LOGGING
 from .apps import INSTALLED_APPS
 from .channels import CHANNEL_LAYERS
 from .rest_framework import REST_FRAMEWORK
