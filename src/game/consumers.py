@@ -23,9 +23,9 @@ class GameConsumer(AsyncWebsocketConsumer):
 
         if self.user.is_authenticated:
             await self.accept()
-            await self.channel_layer.group_send(
-                self.lobby_channel, {'type': 'handle_new_or_returning_player', 'user': 'John'}
-            )
+            events = await lobby_helper.handle_new_or_returning_player(self.user.id, self.lobby_id)
+            for event in events:
+                await self.channel_layer.group_send(self.lobby_channel, event)
         else:
             await self.close(code=status.HTTP_401_UNAUTHORIZED)
 
@@ -42,14 +42,8 @@ class GameConsumer(AsyncWebsocketConsumer):
             self.lobby_channel, data
         )
 
-    async def handle_new_or_returning_player(self, data):
-        """
-        If the user is new to the lobby, add them to the lobby (if there's space) and let everyone know.
-        Else do nothing (or just update presence).
-        """
-        events = await lobby_helper.handle_new_or_returning_player(self.user, self.lobby_id)
-        for event in events:
-            await self.send(text_data=json.dumps(event))
+    async def new_player(self, data):
+        await self.send(text_data=json.dumps(data))
 
     async def update_player(self, data):
         await self.send(text_data=json.dumps(data))
