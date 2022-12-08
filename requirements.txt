@@ -16,6 +16,9 @@ django-environ~=0.9
 channels[daphne]~=4.0
 channels-redis~=4.0
 
+# Auth
+dj-rest-auth~=2.2
+
 # Utils
 shortuuid~=1.0
 
