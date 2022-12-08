@@ -10,4 +10,4 @@ class PlayerSerializer(serializers.ModelSerializer):
         model = Player
         fields = ['id', 'color', 'user', 'race']
 
-    user = UserSerializer()
+    user = UserSerializer(read_only=True)

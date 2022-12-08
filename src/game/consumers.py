@@ -36,16 +36,20 @@ class GameConsumer(AsyncWebsocketConsumer):
     # Receive message from WebSocket
     async def receive(self, text_data=None, bytes_data=None):
         data = json.loads(text_data)
-
-        # Send message to room group
-        await self.channel_layer.group_send(
-            self.lobby_channel, data
-        )
+        if data['type'] == 'update_player':
+            events = await lobby_helper.handle_update_player(self.user.id, data['kwargs']['player'])
+            for event in events:
+                await self.channel_layer.group_send(
+                    self.lobby_channel, event
+                )
+        else:
+            await self.channel_layer.group_send(self.lobby_channel, data)
 
     async def new_player(self, data):
         await self.send(text_data=json.dumps(data))
 
     async def update_player(self, data):
+        print('update_player', data)
         await self.send(text_data=json.dumps(data))
 
     # Receive message from room group

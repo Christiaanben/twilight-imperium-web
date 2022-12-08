@@ -24,3 +24,20 @@ def handle_new_or_returning_player(user_id: str, lobby_id: str):
             }
         ]
     return []
+
+
+@database_sync_to_async
+def handle_update_player(user_id: str, player_kwargs):
+    logger.info(f"handle_update_player user_id: {user_id}; player_kwargs: {player_kwargs}")
+    player = Player.objects.get(id=player_kwargs['id'])
+    serializer = PlayerSerializer(player, data=player_kwargs)
+    serializer.is_valid(raise_exception=True)
+    serializer.save()
+    return [
+        {
+            'type': 'update_player',
+            'kwargs': {
+                'player': serializer.data
+            }
+        }
+    ]
