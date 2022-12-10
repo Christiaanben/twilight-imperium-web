@@ -8,6 +8,6 @@ class PlayerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Player
-        fields = ['id', 'color', 'user', 'race']
+        fields = ['id', 'color', 'user', 'faction']
 
     user = UserSerializer(read_only=True)

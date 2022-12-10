@@ -1,2 +1,2 @@
-from .player_race import PlayerRace
+from .player_faction import PlayerFaction
 from .player_color import PlayerColor
