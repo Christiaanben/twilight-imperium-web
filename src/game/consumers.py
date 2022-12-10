@@ -49,7 +49,6 @@ class GameConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps(data))
 
     async def update_player(self, data):
-        print('update_player', data)
         await self.send(text_data=json.dumps(data))
 
     # Receive message from room group
