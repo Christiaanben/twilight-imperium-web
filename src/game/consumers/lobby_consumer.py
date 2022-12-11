@@ -6,7 +6,7 @@ from rest_framework import status
 from game.helpers import lobby_helper
 
 
-class GameConsumer(AsyncWebsocketConsumer):
+class LobbyConsumer(AsyncWebsocketConsumer):
     def __init__(self, *args, **kwargs):
         super().__init__(args, kwargs)
         self.lobby_id = None
