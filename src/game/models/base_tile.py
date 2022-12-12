@@ -15,3 +15,6 @@ class BaseTile(models.Model):
         default_related_name = 'base_tiles'
         verbose_name = 'BaseTile'
         verbose_name_plural = 'BaseTiles'
+
+    def __str__(self):
+        return f'{self.id}'

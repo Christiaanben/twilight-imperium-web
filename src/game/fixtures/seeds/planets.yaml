@@ -1,0 +1,11 @@
+- model: game.baseplanet
+  pk: mecatol_rex
+  fields:
+    # Foreign keys
+    base_tile: 18
+    # Fields
+    name: Mecatol Rex
+    resource: 1
+    influence: 6
+    trait: null
+    technology: null
