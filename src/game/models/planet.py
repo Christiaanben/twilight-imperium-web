@@ -7,7 +7,7 @@ from .system import System
 
 class Planet(models.Model):
     # Foreign keys
-    tile = models.ForeignKey('game.System', on_delete=models.CASCADE)
+    system = models.ForeignKey('game.System', on_delete=models.CASCADE)
     base = models.ForeignKey('game.BasePlanet', on_delete=models.CASCADE)
     # Fields
     is_exhausted = models.BooleanField(default=True)
@@ -16,10 +16,10 @@ class Planet(models.Model):
         default_related_name = 'planets'
         verbose_name = 'Planet'
         verbose_name_plural = 'Planets'
-        unique_together = [('tile', 'base')]
+        unique_together = [('system', 'base')]
 
     def __str__(self):
-        return f'{self.tile_id}. {self.base_id}'
+        return f'{self.system_id}. {self.base_id}'
 
 
 @receiver(post_save, sender=System)
