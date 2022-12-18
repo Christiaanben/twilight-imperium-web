@@ -1,8 +1,13 @@
 from django.db import models
+from shortuuid import django_fields
 
 
 class Game(models.Model):
-    pass
+    # Primary key
+    id = django_fields.ShortUUIDField(length=8, primary_key=True)
+    # Timestamps
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         default_related_name = 'games'
