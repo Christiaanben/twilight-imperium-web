@@ -1,6 +1,6 @@
 from django.db import models
 
-from .enums import PlayerFaction, PlayerColor
+from .enums import Faction, PlayerColor
 
 
 class Player(models.Model):
@@ -10,8 +10,8 @@ class Player(models.Model):
     # Timestamps
     created_at = models.DateTimeField(auto_now=True)
     # Fields
-    faction = models.CharField(choices=PlayerFaction.choices,
-                               max_length=max([len(v) for v in PlayerFaction.values]),
+    faction = models.CharField(choices=Faction.choices,
+                               max_length=max([len(v) for v in Faction.values]),
                                default=None, null=True, blank=False)
     color = models.CharField(choices=PlayerColor.choices,
                              max_length=max([len(v) for v in PlayerColor.values]),

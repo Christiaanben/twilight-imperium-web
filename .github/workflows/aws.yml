@@ -62,10 +62,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: Run Tests
+    - name: Run tests with coverage
       working-directory: ./src
       run: |
-        python manage.py test
+        coverage run
+        coverage report
+        coverage html
         
   deploy:
     name: Deploy

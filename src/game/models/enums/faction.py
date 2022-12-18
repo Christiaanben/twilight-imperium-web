@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class PlayerFaction(models.TextChoices):
+class Faction(models.TextChoices):
     XXCHA = 'xxcha'
     SOL = 'sol'
     HACAN = 'hacan'
