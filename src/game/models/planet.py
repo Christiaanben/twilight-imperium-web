@@ -26,4 +26,4 @@ class Planet(models.Model):
 def create_planets(instance: System, created: bool, **kwargs):
     if created:
         for base_planet in instance.base.base_planets.all():
-            Planet.objects.create(tile=instance, base=base_planet)
+            Planet.objects.create(system=instance, base=base_planet)
