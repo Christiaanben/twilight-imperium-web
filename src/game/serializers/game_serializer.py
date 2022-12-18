@@ -1,12 +1,12 @@
 from rest_framework import serializers
 
 from game.models import Game
-from .tile_serializer import TileSerializer
+from .system_serializer import SystemSerializer
 
 
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = ['tiles']
+        fields = ['systems']
 
-    tiles = TileSerializer(many=True)
+    systems = SystemSerializer(many=True)

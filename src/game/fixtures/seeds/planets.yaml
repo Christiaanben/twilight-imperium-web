@@ -9,3 +9,50 @@
     influence: 6
     trait: null
     technology: null
+# System 28
+- model: game.baseplanet
+  pk: tequran
+  fields:
+    # Foreign keys
+    base_tile: 28
+    # Fields
+    name: Tequ'ran
+    resource: 2
+    influence: 0
+    trait: hazardous
+    technology: null
+- model: game.baseplanet
+  pk: torkan
+  fields:
+    # Foreign keys
+    base_tile: 28
+    # Fields
+    name: Torkan
+    resource: 0
+    influence: 3
+    trait: cultural
+    technology: null
+# System 38
+- model: game.baseplanet
+  pk: abyz
+  fields:
+    # Foreign keys
+    base_tile: 38
+    # Fields
+    name: Abyz
+    resource: 3
+    influence: 0
+    trait: hazardous
+    technology: null
+- model: game.baseplanet
+  pk: fria
+  fields:
+    # Foreign keys
+    base_tile: 38
+    # Fields
+    name: Fria
+    resource: 2
+    influence: 0
+    trait: hazardous
+    technology: null
+    

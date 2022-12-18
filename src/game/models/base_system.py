@@ -3,7 +3,7 @@ from django.db import models
 from game.models.enums import Faction
 
 
-class BaseTile(models.Model):
+class BaseSystem(models.Model):
     # Primary key
     id = models.PositiveSmallIntegerField(primary_key=True)
     # Fields
@@ -12,9 +12,9 @@ class BaseTile(models.Model):
                                default=None, null=True, blank=False)
 
     class Meta:
-        default_related_name = 'base_tiles'
-        verbose_name = 'BaseTile'
-        verbose_name_plural = 'BaseTiles'
+        default_related_name = 'base_systems'
+        verbose_name = 'Base System'
+        verbose_name_plural = 'Base Systems'
 
     def __str__(self):
         return f'{self.id}'

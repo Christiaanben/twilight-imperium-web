@@ -1,12 +1,12 @@
 from rest_framework import serializers
 
-from game.models import Tile
+from game.models import System
 from .planet_serializer import PlanetSerializer
 
 
-class TileSerializer(serializers.ModelSerializer):
+class SystemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Tile
+        model = System
         fields = ['id', 'q', 'r', 'planets']
 
     id = serializers.IntegerField(source='base.id')

@@ -2,3 +2,27 @@
   pk: 18
   fields:
     faction: null
+- model: game.basetile
+  pk: 28
+  fields:
+    faction: null
+- model: game.basetile
+  pk: 38
+  fields:
+    faction: null
+- model: game.basetile
+  pk: 42
+  fields:
+    faction: null
+- model: game.basetile
+  pk: 44
+  fields:
+    faction: null
+- model: game.basetile
+  pk: 45
+  fields:
+    faction: null
+- model: game.basetile
+  pk: 48
+  fields:
+    faction: null
