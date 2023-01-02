@@ -1,0 +1,28 @@
+- model: game.basesystem
+  pk: 18
+  fields:
+    faction: null
+- model: game.basesystem
+  pk: 28
+  fields:
+    faction: null
+- model: game.basesystem
+  pk: 38
+  fields:
+    faction: null
+- model: game.basesystem
+  pk: 42
+  fields:
+    faction: null
+- model: game.basesystem
+  pk: 44
+  fields:
+    faction: null
+- model: game.basesystem
+  pk: 45
+  fields:
+    faction: null
+- model: game.basesystem
+  pk: 48
+  fields:
+    faction: null

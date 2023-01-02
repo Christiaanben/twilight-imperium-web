@@ -2,11 +2,13 @@ import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
 from rest_framework import status
+from channels.consumer import get_channel_layer
 
+from app.settings.logging import logger
 from game.helpers import lobby_helper
 
 
-class GameConsumer(AsyncWebsocketConsumer):
+class LobbyConsumer(AsyncWebsocketConsumer):
     def __init__(self, *args, **kwargs):
         super().__init__(args, kwargs)
         self.lobby_id = None
@@ -49,7 +51,9 @@ class GameConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps(data))
 
     async def update_player(self, data):
-        print('update_player', data)
+        await self.send(text_data=json.dumps(data))
+        
+    async def new_game(self, data):
         await self.send(text_data=json.dumps(data))
 
     # Receive message from room group
@@ -58,3 +62,12 @@ class GameConsumer(AsyncWebsocketConsumer):
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({'message': message}))
+    
+    @staticmethod
+    async def create_new_game(lobby_id: str):
+        logger.info(f'Starting a new game for {lobby_id}')
+        events = await lobby_helper.handle_new_game(lobby_id)
+        for event in events:
+            await get_channel_layer().group_send(
+                f'lobby_{lobby_id}', event
+            )

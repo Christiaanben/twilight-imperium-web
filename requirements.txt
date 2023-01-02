@@ -25,3 +25,5 @@ shortuuid~=1.0
 # Development
 ipython~=8.6
 django-extensions~=3.2
+coverage~=6.5
+pyyaml~=6.0
