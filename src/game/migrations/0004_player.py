@@ -21,13 +21,13 @@ class Migration(migrations.Migration):
                 ('race', models.CharField(choices=[('xxcha', 'Xxcha'), ('letnev', 'Letnev'), ('sol', 'Sol'), ('norr', 'Norr'), ('hacan', 'Hacan'), ('jol-nar', 'Jol Nar')], default=None, max_length=7, null=True)),
                 ('color', models.CharField(choices=[('red', 'Red'), ('green', 'Green'), ('yellow', 'Yellow'), ('purple', 'Purple'), ('black', 'Black'), ('blue', 'Blue')], default=None, max_length=6, null=True)),
                 ('lobby', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='game.lobby')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('users', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'verbose_name': 'Player',
                 'verbose_name_plural': 'Players',
                 'default_related_name': 'players',
-                'unique_together': {('lobby', 'color'), ('user', 'lobby'), ('lobby', 'race')},
+                'unique_together': {('lobby', 'color'), ('users', 'lobby'), ('lobby', 'race')},
             },
         ),
     ]

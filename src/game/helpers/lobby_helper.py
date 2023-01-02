@@ -8,7 +8,7 @@ from game.serializers import PlayerSerializer
 @database_sync_to_async
 def handle_new_or_returning_player(user_id: str, lobby_id: str):
     """
-    If the user is new to the lobby, add them to the lobby (if there's space) and let everyone know.
+    If the users is new to the lobby, add them to the lobby (if there's space) and let everyone know.
     Else do nothing.
     """
     logger.info(f'handle_new_or_returning_player user_id: {user_id}; lobby_id: {lobby_id}')

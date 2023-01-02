@@ -5,7 +5,7 @@ from .enums import PlayerRace, PlayerColor
 
 class Player(models.Model):
     # Foreign keys
-    user = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE)
     lobby = models.ForeignKey('game.Lobby', on_delete=models.CASCADE)
     # Timestamps
     created_at = models.DateTimeField(auto_now=True)
