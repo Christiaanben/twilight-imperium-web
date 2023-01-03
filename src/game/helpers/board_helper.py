@@ -37,10 +37,10 @@ def generate_board(game: Game):
     systems = [System(game=game, **system) for system in DEFAULT_BOARDS[3]]
     System.objects.bulk_create(systems)
     base_planets = BasePlanet.objects.filter(base_system_id__in=[system.base_id for system in systems])
-    planets = [_create_planet(systems, base_planet) for base_planet in base_planets]
+    planets = [_init_planet(systems, base_planet) for base_planet in base_planets]
     Planet.objects.bulk_create(planets)
 
 
-def _create_planet(systems: List[System], base_planet: BasePlanet) -> Planet:
+def _init_planet(systems: List[System], base_planet: BasePlanet) -> Planet:
     system = [system for system in systems if system.base_id == base_planet.base_system_id][0]
     return Planet(base=base_planet, system=system)
