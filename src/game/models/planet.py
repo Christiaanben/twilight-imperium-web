@@ -20,10 +20,3 @@ class Planet(models.Model):
 
     def __str__(self):
         return f'{self.system_id}. {self.base_id}'
-
-
-@receiver(post_save, sender=System)
-def create_planets(instance: System, created: bool, **kwargs):
-    if created:
-        for base_planet in instance.base.base_planets.all():
-            Planet.objects.create(system=instance, base=base_planet)

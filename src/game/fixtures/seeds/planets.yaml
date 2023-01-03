@@ -1,3 +1,4 @@
+# System 18
 - model: game.baseplanet
   pk: mecatol_rex
   fields:
@@ -9,6 +10,42 @@
     influence: 6
     trait: null
     technology: null
+# System 19
+- model: game.baseplanet
+  pk: wellon
+  fields:
+    # Foreign keys
+    base_system: 19
+    # Fields
+    name: Wellon
+    resource: 1
+    influence: 2
+    trait: industrial
+    technology: cybernetic
+# System 22
+- model: game.baseplanet
+  pk: tarmann
+  fields:
+    # Foreign keys
+    base_system: 22
+    # Fields
+    name: Tar'mann
+    resource: 1
+    influence: 1
+    trait: industrial
+    technology: biotic
+# System 24
+- model: game.baseplanet
+  pk: mehar_xull
+  fields:
+    # Foreign keys
+    base_system: 24
+    # Fields
+    name: Mehar Xull
+    resource: 1
+    influence: 3
+    trait: hazardous
+    technology: warfare
 # System 28
 - model: game.baseplanet
   pk: tequran

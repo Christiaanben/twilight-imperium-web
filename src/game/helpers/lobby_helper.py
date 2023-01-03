@@ -1,6 +1,7 @@
 from channels.db import database_sync_to_async
 
 from app.settings import logger
+from game.helpers import board_helper
 from game.models import Player, Game, System
 from game.serializers import PlayerSerializer, GameSerializer
 
@@ -46,14 +47,7 @@ def handle_update_player(user_id: str, player_kwargs):
 @database_sync_to_async
 def handle_new_game(game_id: str):
     game = Game.objects.get(id=game_id)
-    System.objects.create(game=game, base_id=18, q=0, r=0)
-
-    System.objects.create(game=game, base_id=45, q=-1, r=0)
-    System.objects.create(game=game, base_id=28, q=-1, r=1)
-    System.objects.create(game=game, base_id=48, q=0, r=-1)
-    System.objects.create(game=game, base_id=42, q=0, r=1)
-    System.objects.create(game=game, base_id=44, q=1, r=-1)
-    System.objects.create(game=game, base_id=38, q=1, r=0)
+    board_helper.generate_board(game)
     return [{
         'type': 'new_game',
         'kwargs': {
