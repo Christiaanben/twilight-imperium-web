@@ -9,7 +9,7 @@ class ViewTests(TestCase):
         data = {
             'email': 'Test_email@gmail.com',
             'password1': 'TestPass123!',
-            "password2": "TestPass123!",
+            'password2': 'TestPass123!',
             'display_name': 'TestName',
         }
         n_users = User.objects.count()
@@ -20,4 +20,4 @@ class ViewTests(TestCase):
 
         self.assertEquals(response.status_code, 201)
         self.assertEquals(User.objects.count(), n_users + 1)
-        self.assertEquals(user.check_password(data['password']), True)
+        self.assertEquals(user.check_password(data['password1']), True)
