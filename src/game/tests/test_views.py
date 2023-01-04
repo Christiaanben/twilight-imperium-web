@@ -2,7 +2,7 @@ from django.test import TestCase
 from rest_framework.reverse import reverse
 
 from app.utils.tests import DBTestCase
-from game.models import Lobby
+from game.models import Game
 
 
 class LobbyViewTests(TestCase):
@@ -12,12 +12,12 @@ class LobbyViewTests(TestCase):
         data = {
             'name': 'lobby-name'
         }
-        n_lobbies = Lobby.objects.count()
+        n_lobbies = Game.objects.count()
         # Execute
         response = self.client.post('/api/lobbies/', data=data)
         # Assert
         self.assertEquals(response.status_code, 201)
-        self.assertEquals(Lobby.objects.count(), n_lobbies + 1)
+        self.assertEquals(Game.objects.count(), n_lobbies + 1)
 
 
 class GameViewTests(DBTestCase):

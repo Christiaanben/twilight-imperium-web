@@ -1,19 +1,20 @@
 from channels.db import database_sync_to_async
 
 from app.settings import logger
+from game.helpers import board_helper
 from game.models import Player, Game, System
 from game.serializers import PlayerSerializer, GameSerializer
 
 
 @database_sync_to_async
-def handle_new_or_returning_player(user_id: str, lobby_id: str):
+def handle_new_or_returning_player(user_id: str, game_id: str):
     """
-    If the users is new to the lobby, add them to the lobby (if there's space) and let everyone know.
+    If the user is new to the lobby, add them to the Game (if there's space) and let everyone know.
     Else do nothing.
     """
-    logger.info(f'handle_new_or_returning_player user_id: {user_id}; lobby_id: {lobby_id}')
+    logger.info(f'handle_new_or_returning_player user_id: {user_id}; game_id: {game_id}')
     # TODO: check space / game already started
-    player, created = Player.objects.get_or_create(lobby_id=lobby_id, user_id=user_id)
+    player, created = Player.objects.get_or_create(game_id=game_id, user_id=user_id)
     if created:
         return [
             {
@@ -41,18 +42,12 @@ def handle_update_player(user_id: str, player_kwargs):
             }
         }
     ]
-    
+
+
 @database_sync_to_async
-def handle_new_game(game_id:str):
-    game = Game.objects.create(id=game_id)
-    System.objects.create(game=game, base_id=18, q=0, r=0)
-    
-    System.objects.create(game=game, base_id=45, q=-1, r=0)
-    System.objects.create(game=game, base_id=28, q=-1, r=1)
-    System.objects.create(game=game, base_id=48, q=0, r=-1)
-    System.objects.create(game=game, base_id=42, q=0, r=1)
-    System.objects.create(game=game, base_id=44, q=1, r=-1)
-    System.objects.create(game=game, base_id=38, q=1, r=0)
+def handle_new_game(game_id: str):
+    game = Game.objects.get(id=game_id)
+    board_helper.generate_board(game)
     return [{
         'type': 'new_game',
         'kwargs': {

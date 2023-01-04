@@ -6,7 +6,7 @@ from .enums import Faction, PlayerColor
 class Player(models.Model):
     # Foreign keys
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    lobby = models.ForeignKey('game.Lobby', on_delete=models.CASCADE)
+    game = models.ForeignKey('game.Game', on_delete=models.CASCADE)
     # Timestamps
     created_at = models.DateTimeField(auto_now=True)
     # Fields
@@ -22,10 +22,10 @@ class Player(models.Model):
         default_related_name = 'players'
         verbose_name = 'Player'
         verbose_name_plural = 'Players'
-        unique_together = [('user', 'lobby'), ('lobby', 'faction'), ('lobby', 'color')]
+        unique_together = [('user', 'game'), ('game', 'faction'), ('game', 'color')]
 
     def __repr__(self):
-        return f'Player(id={self.id}, user_id={self.user_id}, lobby_id={self.lobby_id})'
+        return f'Player(id={self.id}, user_id={self.user_id}, lobby_id={self.game_id})'
 
     def __str__(self):
-        return f'{self.user} on {self.lobby_id}'
+        return f'{self.user} on {self.game_id}'

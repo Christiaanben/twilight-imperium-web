@@ -15,6 +15,7 @@ django-environ~=0.9
 # Channels & Servers
 channels[daphne]~=4.0
 channels-redis~=4.0
+Twisted[tls,http2]~=22.10.0
 
 # Auth
 dj-rest-auth~=2.2

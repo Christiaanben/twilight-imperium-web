@@ -3,6 +3,18 @@
   fields:
     faction: null
 - model: game.basesystem
+  pk: 19
+  fields:
+    faction: null
+- model: game.basesystem
+  pk: 22
+  fields:
+    faction: null
+- model: game.basesystem
+  pk: 24
+  fields:
+    faction: null
+- model: game.basesystem
   pk: 28
   fields:
     faction: null
@@ -24,5 +36,9 @@
     faction: null
 - model: game.basesystem
   pk: 48
+  fields:
+    faction: null
+- model: game.basesystem
+  pk: 49
   fields:
     faction: null
