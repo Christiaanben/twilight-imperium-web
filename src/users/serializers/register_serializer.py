@@ -10,19 +10,28 @@ User = get_user_model()
 
 RegisterSerializer
 class CustomRegisterSerializer(RegisterSerializer):
-    username = None
-    display_name = serializers.CharField(max_length=30,
-                                         min_length=3,
-                                         required=True,)
-
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2', 'display_name']
+        fields = ['email', 'password', 'display_name']
+
+    username = None
+    display_name = serializers.CharField(max_length= 30,
+                                         min_length= 3,
+                                         required= True,)
+    password = serializers.CharField(write_only= True, required= True)
+    password1 = serializers.CharField(write_only= True, required= False)
+    password2 = serializers.CharField(write_only= True, required= False)
+
+
+    @transaction.atomic
+    def validate(self, data):
+        data['password1'] = data['password']
+        data['password2'] = data['password']
+        return data
 
     @transaction.atomic
     def save(self, request):
         user = super().save(request)
-        print("Display name data: " + str(self.data.get('display_name')))
         user.display_name = self.data.get('display_name')
         user.save()
         return user
