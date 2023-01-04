@@ -24,8 +24,6 @@ urlpatterns = [
     path('health/', include('health_check.urls')),
     path('api/', include(router.urls)),
     path('api-token-auth/', views.obtain_auth_token),
-    path('account/', include('dj_rest_auth.urls')),
-    path('users/', include('users.urls')),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls'))
+    path('', include('dj_rest_auth.urls')),
+    path('registration/', include('dj_rest_auth.registration.urls'))
 ]

@@ -1,5 +1,4 @@
 from django.test import TestCase
-
 from .models.user import User
 
 
@@ -9,11 +8,13 @@ class ViewTests(TestCase):
         # Setup
         data = {
             'email': 'Test_email@gmail.com',
-            'password': 'Test12345!'
+            'password1': 'TestPass123!',
+            "password2": "TestPass123!",
+            'display_name': 'TestName',
         }
         n_users = User.objects.count()
         # Execute
-        response = self.client.post('/users/register', data=data)
+        response = self.client.post('/registration/', data=data)
         # Assert
         user = User.objects.get(email=data['email'])
 

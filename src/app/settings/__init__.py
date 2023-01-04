@@ -114,6 +114,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://app.twilightimperium.click",
 ]
 
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer'
+}
+
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'users.serializers.register_serializer.CustomRegisterSerializer',
 }
