@@ -136,4 +136,3 @@ GitHub.sublime-settings
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
-/src/game/_trial_temp/_trial_marker
