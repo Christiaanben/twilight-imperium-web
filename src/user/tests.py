@@ -1,6 +1,9 @@
 from django.test import TestCase
-from .models.user import User
+from django.urls import reverse
 from rest_framework.authtoken.models import Token
+
+from .models import User
+
 
 class ViewTests(TestCase):
     fixtures = ['user.yaml']
@@ -13,20 +16,28 @@ class ViewTests(TestCase):
             'display_name': 'TestName',
         }
         n_users = User.objects.count()
-        response = self.client.post('/registration/', data=data)
-        user = User.objects.get(email=data['email'])
 
+        # Execute
+        response = self.client.post(reverse('rest_register'), data=data)
+
+        # Assert
+        user = User.objects.get(email=data['email'])
         self.assertEquals(response.status_code, 201)
         self.assertEquals(User.objects.count(), n_users + 1)
         self.assertEquals(user.check_password(data['password']), True)
 
     def test_user_login(self):
+        # Setup
         data = {
             'email': 'LoginEmail@gmail.com',
             'password': 'Loginpass123!'
         }
-        response = self.client.post('/login/', data=data)
+
+        # Execute
+        response = self.client.post(reverse('rest_login'), data=data)
+
+        # Assert
         user = User.objects.get(email=data['email'])
-        token = Token.objects.get(user= user)
+        token = Token.objects.get(user=user)
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.data['key'], token.key)
