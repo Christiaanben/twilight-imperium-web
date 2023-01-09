@@ -19,7 +19,6 @@ Twisted[tls,http2]~=22.10.0
 
 # Auth
 dj-rest-auth~=2.2
-django-allauth~=0.50.0
 
 # Utils
 shortuuid~=1.0

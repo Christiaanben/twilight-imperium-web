@@ -25,7 +25,7 @@ class TokenAuthMiddleware:
     async def __call__(self, scope, receive, send):
         query_params = parse_qs(scope["query_string"].decode())
         token = query_params['token'][0]
-        scope["users"] = await fetch_user(token)
+        scope["user"] = await fetch_user(token)
         return await self.app(scope, receive, send)
 
 
