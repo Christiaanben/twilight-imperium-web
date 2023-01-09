@@ -115,11 +115,11 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer'
+    'USER_DETAILS_SERIALIZER': 'user.serializers.UserSerializer'
 }
 
 REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'users.serializers.register_serializer.CustomRegisterSerializer',
+    'REGISTER_SERIALIZER': 'user.serializers.register_serializer.CustomRegisterSerializer',
 }
 
 AUTHENTICATION_BACKENDS = [

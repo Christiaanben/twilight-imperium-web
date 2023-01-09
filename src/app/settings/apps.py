@@ -35,7 +35,7 @@ auth_apps = [
 
 project_apps = [
     'game',
-    'users',
+    'user',
 ]
 
 INSTALLED_APPS = server_apps + django_apps + third_party_apps + auth_apps + project_apps
