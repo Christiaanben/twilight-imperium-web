@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from game.models import Player
-from user.serializers import UserSerializer
+from users.serializers import UserSerializer
 
 
 class PlayerSerializer(serializers.ModelSerializer):

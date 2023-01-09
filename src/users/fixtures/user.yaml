@@ -1,0 +1,8 @@
+- model: users.user
+  fields:
+   id: 6
+   password: 'pbkdf2_sha256$390000$1YAPxovOdaPq3UvBINu6z5$vHYCDvjXxbHPKdZFU/HSw65OCkOVZQHfTDf0WigcWvg='
+   email: 'LoginEmail@gmail.com'
+   is_staff: False
+   is_active: True
+   display_name: 'TestDisplayName'
