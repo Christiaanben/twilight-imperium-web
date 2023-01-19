@@ -15,6 +15,13 @@ DEFAULT_BOARDS = {
         {'base_id': 42, 'q': 0, 'r': 1},
         # RING 2
         {'base_id': 38, 'q': 2, 'r': 0},
+        {'base_id': 25, 'q': 1, 'r': 1},
+        {'base_id': 33, 'q': 0, 'r': 2},
+        {'base_id': 47, 'q': -1, 'r': 2},
+        {'base_id': 27, 'q': -2, 'r': 2},
+        {'base_id': 26, 'q': -2, 'r': 1},
+        {'base_id': 30, 'q': -2, 'r': 0},
+        {'base_id': 40, 'q': -1, 'r': -1},
     ],
     4: [
         # CENTER

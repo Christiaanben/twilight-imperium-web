@@ -46,27 +46,97 @@
     influence: 3
     trait: hazardous
     technology: warfare
-# System 28
+# System 25
 - model: game.baseplanet
-  pk: tequran
+  pk: quann
   fields:
     # Foreign keys
-    base_system: 28
+    base_system: 25
     # Fields
-    name: Tequ'ran
+    name: Quann
     resource: 2
-    influence: 0
+    influence: 1
+    trait: cultural
+    technology: null
+# System 26
+- model: game.baseplanet
+  pk: lodor
+  fields:
+    # Foreign keys
+    base_system: 26
+    # Fields
+    name: Lodor
+    resource: 3
+    influence: 1
+    trait: cultural
+    technology: null
+# System 27
+- model: game.baseplanet
+  pk: new_albion
+  fields:
+    # Foreign keys
+    base_system: 27
+    # Fields
+    name: New Albion
+    resource: 1
+    influence: 1
+    trait: industrial
+    technology: biotic
+- model: game.baseplanet
+  pk: starpoint
+  fields:
+    # Foreign keys
+    base_system: 27
+    # Fields
+    name: Starpoint
+    resource: 3
+    influence: 1
     trait: hazardous
     technology: null
+# System 30
 - model: game.baseplanet
-  pk: torkan
+  pk: mellon
   fields:
     # Foreign keys
-    base_system: 28
+    base_system: 30
     # Fields
-    name: Torkan
+    name: Mellon
     resource: 0
-    influence: 3
+    influence: 2
+    trait: cultural
+    technology: null
+- model: game.baseplanet
+  pk: zohbat
+  fields:
+    # Foreign keys
+    base_system: 30
+    # Fields
+    name: Zohbat
+    resource: 3
+    influence: 1
+    trait: hazardous
+    technology: null
+# System 33
+- model: game.baseplanet
+  pk: corneeq
+  fields:
+    # Foreign keys
+    base_system: 33
+    # Fields
+    name: Corneeq
+    resource: 1
+    influence: 2
+    trait: cultural
+    technology: null
+- model: game.baseplanet
+  pk: resculon
+  fields:
+    # Foreign keys
+    base_system: 33
+    # Fields
+    name: Resculon
+    resource: 2
+    influence: 0
     trait: cultural
     technology: null
 # System 38
