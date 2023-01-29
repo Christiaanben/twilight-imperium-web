@@ -22,6 +22,18 @@
     influence: 2
     trait: industrial
     technology: cybernetic
+# System 21
+- model: game.baseplanet
+  pk: thibah
+  fields:
+    # Foreign keys
+    base_system: 21
+    # Fields
+    name: Thibah
+    resource: 1
+    influence: 1
+    trait: industrial
+    technology: propulsion
 # System 22
 - model: game.baseplanet
   pk: tarmann
@@ -34,6 +46,18 @@
     influence: 1
     trait: industrial
     technology: biotic
+# System 23
+- model: game.baseplanet
+  pk: saudor
+  fields:
+    # Foreign keys
+    base_system: 23
+    # Fields
+    name: Saudor
+    resource: 2
+    influence: 2
+    trait: industrial
+    technology: null
 # System 24
 - model: game.baseplanet
   pk: mehar_xull
@@ -93,6 +117,29 @@
     influence: 1
     trait: hazardous
     technology: null
+# System 29
+- model: game.baseplanet
+  pk: qucenn
+  fields:
+    # Foreign keys
+    base_system: 29
+    # Fields
+    name: Qucen'n
+    resource: 1
+    influence: 2
+    trait: industrial
+    technology: null
+- model: game.baseplanet
+  pk: rarron
+  fields:
+    # Foreign keys
+    base_system: 29
+    # Fields
+    name: Rarron
+    resource: 0
+    influence: 3
+    trait: cultural
+    technology: null
 # System 30
 - model: game.baseplanet
   pk: mellon
@@ -113,6 +160,29 @@
     # Fields
     name: Zohbat
     resource: 3
+    influence: 1
+    trait: hazardous
+    technology: null
+# System 31
+- model: game.baseplanet
+  pk: lazar
+  fields:
+    # Foreign keys
+    base_system: 31
+    # Fields
+    name: Lazar
+    resource: 1
+    influence: 0
+    trait: industrial
+    technology: cybernetic
+- model: game.baseplanet
+  pk: sakulag
+  fields:
+    # Foreign keys
+    base_system: 31
+    # Fields
+    name: Sakulag
+    resource: 2
     influence: 1
     trait: hazardous
     technology: null
@@ -138,6 +208,75 @@
     resource: 2
     influence: 0
     trait: cultural
+    technology: null
+# System 34
+- model: game.baseplanet
+  pk: centauri
+  fields:
+    # Foreign keys
+    base_system: 34
+    # Fields
+    name: Centauri
+    resource: 1
+    influence: 3
+    trait: cultural
+    technology: null
+- model: game.baseplanet
+  pk: gral
+  fields:
+    # Foreign keys
+    base_system: 34
+    # Fields
+    name: Gral
+    resource: 1
+    influence: 1
+    trait: industrial
+    technology: propulsion
+# System 35
+- model: game.baseplanet
+  pk: bereg
+  fields:
+    # Foreign keys
+    base_system: 35
+    # Fields
+    name: Bereg
+    resource: 3
+    influence: 1
+    trait: hazardous
+    technology: null
+- model: game.baseplanet
+  pk: lirta_iv
+  fields:
+    # Foreign keys
+    base_system: 35
+    # Fields
+    name: Lirta IV
+    resource: 2
+    influence: 3
+    trait: hazardous
+    technology: null
+# System 36
+- model: game.baseplanet
+  pk: arnor
+  fields:
+    # Foreign keys
+    base_system: 36
+    # Fields
+    name: Arnor
+    resource: 2
+    influence: 1
+    trait: industrial
+    technology: null
+- model: game.baseplanet
+  pk: lor
+  fields:
+    # Foreign keys
+    base_system: 36
+    # Fields
+    name: Lor
+    resource: 1
+    influence: 2
+    trait: industrial
     technology: null
 # System 38
 - model: game.baseplanet

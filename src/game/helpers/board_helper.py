@@ -22,6 +22,20 @@ DEFAULT_BOARDS = {
         {'base_id': 26, 'q': -2, 'r': 1},
         {'base_id': 30, 'q': -2, 'r': 0},
         {'base_id': 40, 'q': -1, 'r': -1},
+        {'base_id': 35, 'q': 0, 'r': -2},
+        {'base_id': 23, 'q': 1, 'r': -2},
+        {'base_id': 36, 'q': 2, 'r': -2},
+        {'base_id': 39, 'q': 2, 'r': -1},
+        # RING 3
+        {'base_id': 29, 'q': 1, 'r': 2},
+        # FACTION 1
+        {'base_id': 34, 'q': -1, 'r': 3},
+        {'base_id': 28, 'q': -3, 'r': 1},
+        # FACTION 2
+        {'base_id': 21, 'q': -2, 'r': -1},
+        {'base_id': 50, 'q': 2, 'r': -3},
+        # FACTION 3
+        {'base_id': 31, 'q': 3, 'r': -2},
     ],
     4: [
         # CENTER
