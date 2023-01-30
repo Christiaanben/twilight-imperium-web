@@ -1,3 +1,141 @@
+# System 1
+- model: game.baseplanet
+  pk: jord
+  fields:
+    # Foreign keys
+    base_system: 1
+    # Fields
+    name: Jord
+    resource: 4
+    influence: 2
+    trait: null
+    technology: null
+# System 10
+- model: game.baseplanet
+  pk: arc_prime
+  fields:
+    # Foreign keys
+    base_system: 10
+    # Fields
+    name: Arc Prime
+    resource: 4
+    influence: 0
+    trait: null
+    technology: null
+- model: game.baseplanet
+  pk: wren_terra
+  fields:
+    # Foreign keys
+    base_system: 10
+    # Fields
+    name: Wren Terra
+    resource: 2
+    influence: 1
+    trait: null
+    technology: null
+# System 12
+- model: game.baseplanet
+  pk: nar
+  fields:
+    # Foreign keys
+    base_system: 12
+    # Fields
+    name: Nar
+    resource: 2
+    influence: 3
+    trait: null
+    technology: null
+- model: game.baseplanet
+  pk: jol
+  fields:
+    # Foreign keys
+    base_system: 12
+    # Fields
+    name: Jol
+    resource: 1
+    influence: 2
+    trait: null
+    technology: null
+# System 13
+- model: game.baseplanet
+  pk: tren_lak
+  fields:
+    # Foreign keys
+    base_system: 13
+    # Fields
+    name: Tren'lak
+    resource: 1
+    influence: 0
+    trait: null
+    technology: null
+- model: game.baseplanet
+  pk: quinarra
+  fields:
+    # Foreign keys
+    base_system: 13
+    # Fields
+    name: Quinarra
+    resource: 3
+    influence: 1
+    trait: null
+    technology: null
+# System 14
+- model: game.baseplanet
+  pk: archon_ren
+  fields:
+    # Foreign keys
+    base_system: 14
+    # Fields
+    name: Archon Ren
+    resource: 2
+    influence: 3
+    trait: null
+    technology: null
+- model: game.baseplanet
+  pk: archon_tau
+  fields:
+    # Foreign keys
+    base_system: 14
+    # Fields
+    name: Archon Tau
+    resource: 1
+    influence: 1
+    trait: null
+    technology: null
+# System 16
+- model: game.baseplanet
+  pk: arretze
+  fields:
+    # Foreign keys
+    base_system: 16
+    # Fields
+    name: Arretze
+    resource: 2
+    influence: 0
+    trait: null
+    technology: null
+- model: game.baseplanet
+  pk: hercant
+  fields:
+    # Foreign keys
+    base_system: 16
+    # Fields
+    name: Hercant
+    resource: 1
+    influence: 1
+    trait: null
+    technology: null
+- model: game.baseplanet
+  pk: kamdorn
+  fields:
+    # Foreign keys
+    base_system: 16
+    # Fields
+    name: Kamdorn
+    resource: 0
+    influence: 1
+    trait: null
+    technology: null
 # System 18
 - model: game.baseplanet
   pk: mecatol_rex

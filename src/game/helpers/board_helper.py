@@ -1,6 +1,6 @@
 from typing import List
 
-from game.models import Game, System, BasePlanet, Planet
+from game.models import Game, System, BasePlanet, Planet, BaseSystem
 
 DEFAULT_BOARDS = {
     3: [
@@ -28,13 +28,13 @@ DEFAULT_BOARDS = {
         {'base_id': 39, 'q': 2, 'r': -1},
         # RING 3
         {'base_id': 29, 'q': 1, 'r': 2},
-        # FACTION 1
+        {'base_id': None, 'q': 0, 'r': 3},  # Faction 1
         {'base_id': 34, 'q': -1, 'r': 3},
         {'base_id': 28, 'q': -3, 'r': 1},
-        # FACTION 2
+        {'base_id': None, 'q': -3, 'r': 0},  # Faction 2
         {'base_id': 21, 'q': -2, 'r': -1},
         {'base_id': 50, 'q': 2, 'r': -3},
-        # FACTION 3
+        {'base_id': None, 'q': 3, 'r': -3},  # Faction 3
         {'base_id': 31, 'q': 3, 'r': -2},
     ],
     4: [
@@ -56,6 +56,8 @@ DEFAULT_BOARDS = {
 def generate_board(game: Game):
     n_players = game.players.count()
     systems = [System(game=game, **system) for system in DEFAULT_BOARDS[3]]
+    for player, system in zip(game.players.all(), filter(lambda s: s.base_id is None, systems)):
+        system.base = BaseSystem.objects.get(faction=player.faction)
     System.objects.bulk_create(systems)
     base_planets = BasePlanet.objects.filter(base_system_id__in=[system.base_id for system in systems])
     planets = [_init_planet(systems, base_planet) for base_planet in base_planets]

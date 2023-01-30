@@ -1,4 +1,28 @@
 - model: game.basesystem
+  pk: 1
+  fields:
+    faction: sol
+- model: game.basesystem
+  pk: 10
+  fields:
+    faction: letnev
+- model: game.basesystem
+  pk: 12
+  fields:
+    faction: jol_nar
+- model: game.basesystem
+  pk: 13
+  fields:
+    faction: sardakk_norr
+- model: game.basesystem
+  pk: 14
+  fields:
+    faction: xxcha
+- model: game.basesystem
+  pk: 16
+  fields:
+    faction: hacan
+- model: game.basesystem
   pk: 18
   fields:
     faction: null

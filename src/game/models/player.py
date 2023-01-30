@@ -6,7 +6,7 @@ from .enums import Faction, PlayerColor
 class Player(models.Model):
     # Foreign keys
     user = models.ForeignKey('user.User', on_delete=models.CASCADE)
-    game = models.ForeignKey('game.Game', on_delete=models.CASCADE)
+    game = models.ForeignKey('game.Game', on_delete=models.CASCADE, related_name='players')
     # Timestamps
     created_at = models.DateTimeField(auto_now=True)
     # Fields
