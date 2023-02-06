@@ -3,6 +3,19 @@ from typing import List
 from game.models import Game, System, BasePlanet, Planet, BaseSystem
 
 DEFAULT_BOARDS = {
+    1: [
+        # CENTER
+        {'base_id': 18, 'q': 0, 'r': 0},
+        # RING 1
+        {'base_id': None, 'q': 1, 'r': 0},
+    ],
+    2: [
+        # CENTER
+        {'base_id': 18, 'q': 0, 'r': 0},
+        # RING 1
+        {'base_id': None, 'q': 1, 'r': 0},
+        {'base_id': None, 'q': -1, 'r': 0},
+    ],
     3: [
         # CENTER
         {'base_id': 18, 'q': 0, 'r': 0},
@@ -55,7 +68,7 @@ DEFAULT_BOARDS = {
 
 def generate_board(game: Game):
     n_players = game.players.count()
-    systems = [System(game=game, **system) for system in DEFAULT_BOARDS[3]]
+    systems = [System(game=game, **system) for system in DEFAULT_BOARDS[n_players]]
     for player, system in zip(game.players.all(), filter(lambda s: s.base_id is None, systems)):
         system.base = BaseSystem.objects.get(faction=player.faction)
     System.objects.bulk_create(systems)
