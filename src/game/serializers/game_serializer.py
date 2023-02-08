@@ -7,6 +7,6 @@ from .system_serializer import SystemSerializer
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = ['systems']
+        fields = ['systems', 'phase']
 
     systems = SystemSerializer(many=True)
