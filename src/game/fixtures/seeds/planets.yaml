@@ -324,6 +324,29 @@
     influence: 1
     trait: hazardous
     technology: null
+# System 32
+- model: game.baseplanet
+  pk: dal_bootha
+  fields:
+    # Foreign keys
+    base_system: 32
+    # Fields
+    name: Dal Bootha
+    resource: 0
+    influence: 2
+    trait: cultural
+    technology: null
+- model: game.baseplanet
+  pk: xxehan
+  fields:
+    # Foreign keys
+    base_system: 32
+    # Fields
+    name: Xxehan
+    resource: 1
+    influence: 1
+    trait: cultural
+    technology: null
 # System 33
 - model: game.baseplanet
   pk: corneeq
@@ -416,6 +439,29 @@
     influence: 2
     trait: industrial
     technology: null
+# System 37
+- model: game.baseplanet
+  pk: arinam
+  fields:
+    # Foreign keys
+    base_system: 37
+    # Fields
+    name: Arinam
+    resource: 1
+    influence: 2
+    trait: industrial
+    technology: null
+- model: game.baseplanet
+  pk: meer
+  fields:
+    # Foreign keys
+    base_system: 37
+    # Fields
+    name: Meer
+    resource: 0
+    influence: 4
+    trait: hazardous
+    technology: warfare
 # System 38
 - model: game.baseplanet
   pk: abyz

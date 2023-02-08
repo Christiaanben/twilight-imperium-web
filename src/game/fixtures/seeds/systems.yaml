@@ -75,6 +75,10 @@
   fields:
     faction: null
 - model: game.basesystem
+  pk: 32
+  fields:
+    faction: null
+- model: game.basesystem
   pk: 33
   fields:
     faction: null
@@ -91,6 +95,10 @@
   fields:
     faction: null
 - model: game.basesystem
+  pk: 37
+  fields:
+    faction: null
+- model: game.basesystem
   pk: 38
   fields:
     faction: null
@@ -103,6 +111,10 @@
   fields:
     faction: null
 - model: game.basesystem
+  pk: 41
+  fields:
+    faction: null
+- model: game.basesystem
   pk: 42
   fields:
     faction: null
@@ -112,6 +124,10 @@
     faction: null
 - model: game.basesystem
   pk: 45
+  fields:
+    faction: null
+- model: game.basesystem
+  pk: 46
   fields:
     faction: null
 - model: game.basesystem
