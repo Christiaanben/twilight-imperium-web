@@ -2,6 +2,8 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 from shortuuid import django_fields
 
+from .enums import Phase
+
 
 class Game(models.Model):
     # Primary key
@@ -11,6 +13,8 @@ class Game(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     # Fields
     name = models.CharField(max_length=30, blank=False, default='', validators=[MinLengthValidator(3)])
+    phase = models.CharField(max_length=max([len(val) for val in Phase.values]), choices=Phase.choices, default=Phase.STRATEGY)
+    round = models.PositiveSmallIntegerField(default=1)
 
     class Meta:
         default_related_name = 'games'
