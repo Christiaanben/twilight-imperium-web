@@ -11,6 +11,8 @@ class Game(models.Model):
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    # Foreign keys
+    speaker = models.OneToOneField('game.Player', on_delete=models.SET_NULL, null=True)
     # Fields
     name = models.CharField(max_length=30, blank=False, default='', validators=[MinLengthValidator(3)])
     phase = models.CharField(max_length=max([len(val) for val in Phase.values]), choices=Phase.choices, default=Phase.STRATEGY)
