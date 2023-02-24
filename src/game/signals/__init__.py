@@ -12,5 +12,5 @@ def handle_player_ready(instance: Player, **kwargs):
                                                                                                   flat=True).last()
     if is_ready_has_changed:
         other_players = instance.game.players.exclude(id=instance.id)
-        if instance.is_ready:
+        if instance.is_ready and all(other_players.values_list('is_ready', flat=True)):
             async_to_sync(LobbyConsumer.create_new_game)(instance.game_id)
