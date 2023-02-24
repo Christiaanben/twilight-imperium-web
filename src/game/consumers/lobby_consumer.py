@@ -1,11 +1,12 @@
 import json
 
+from channels.db import database_sync_to_async as db_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 from rest_framework import status
 from channels.consumer import get_channel_layer
 
 from app.settings.logging import logger
-from game.helpers import lobby_helper
+from game.helpers import lobby_helper, game_manager
 
 
 class LobbyConsumer(AsyncWebsocketConsumer):
@@ -67,6 +68,7 @@ class LobbyConsumer(AsyncWebsocketConsumer):
     async def create_new_game(lobby_id: str):
         logger.info(f'Starting a new game for {lobby_id}')
         events = await lobby_helper.handle_new_game(lobby_id)
+        await db_async(game_manager.start_game)(lobby_id)
         for event in events:
             await get_channel_layer().group_send(
                 f'lobby_{lobby_id}', event
