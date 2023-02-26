@@ -28,4 +28,4 @@ class Player(models.Model):
         return f'Player(id={self.id}, user_id={self.user_id}, lobby_id={self.game_id})'
 
     def __str__(self):
-        return f'{self.user} on {self.game_id}'
+        return repr(self)
