@@ -22,13 +22,19 @@ class GameConsumer(AsyncWebsocketConsumer):
         await self.accept()
 
     async def disconnect(self, close_code):
-        pass
+        await self.close()
 
     async def receive(self, text_data=None, bytes_data=None):
         data = json.loads(text_data)
         logger.info(f"Received data: {data}")
         if data['type'] == 'select_strategy':
-            await db_async(status_phase_helper.select_strategy)(
+            strategy = await db_async(status_phase_helper.select_strategy)(
                 player=self.player,
                 strategy_type=getattr(StrategyType, data['kwargs']['strategy'].upper())
             )
+            await self.send(text_data=json.dumps({
+                'type': 'select_strategy',
+                'kwargs': {
+                    'type': strategy.type,
+                }
+            }))
