@@ -4,21 +4,26 @@ from channels.db import database_sync_to_async as db_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 from app.settings import logger
-from game.helpers import status_phase_helper
-from game.models import Player
-from game.models.enums import StrategyType
+from game.helpers.commands import COMMANDS
+from game.models import Player, Game
 
 
 class GameConsumer(AsyncWebsocketConsumer):
 
     def __init__(self, *args, **kwargs):
         super().__init__(args, kwargs)
+        self.game = None
+        self.game_channel = None
         self.player = None
         self.game_id = None
 
     async def connect(self):
         self.game_id = self.scope['url_route']['kwargs']['game_id']
+        self.game_channel = f'game_{self.game_id}'
+        self.game = await db_async(Game.objects.get)(id=self.game_id)
         self.player = await db_async(Player.objects.get)(user=self.scope['user'], game_id=self.game_id)
+
+        await self.channel_layer.group_add(self.game_channel, self.channel_name)
         await self.accept()
 
     async def disconnect(self, close_code):
@@ -27,14 +32,29 @@ class GameConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data=None, bytes_data=None):
         data = json.loads(text_data)
         logger.info(f"Received data: {data}")
-        if data['type'] == 'select_strategy':
-            strategy = await db_async(status_phase_helper.select_strategy)(
-                player=self.player,
-                strategy_type=getattr(StrategyType, data['kwargs']['strategy'].upper())
+        
+        command_class = COMMANDS.get(data['type'])
+        command = command_class(data['kwargs'])
+        events = await db_async(command.execute)(self.game, self.player)
+        for event in events:
+            await self.channel_layer.group_send(
+                self.game_channel,
+                event
             )
-            await self.send(text_data=json.dumps({
-                'type': 'select_strategy',
-                'kwargs': {
-                    'type': strategy.type,
-                }
-            }))
+        
+        # if data['type'] == 'select_strategy':
+        #     strategy = await db_async(status_phase_helper.select_strategy)(
+        #         player=self.player,
+        #         strategy_type=getattr(StrategyType, data['kwargs']['strategy'].upper())
+        #     )
+        #     await self.channel_layer.group_send(
+        #         self.game_channel,
+        #         {
+        #             'type': 'select_strategy',
+        #             'kwargs': {
+        #                 'type': strategy.type,
+        #             }
+        #         })
+
+    async def select_strategy(self, data):
+        await self.send(text_data=json.dumps(data))
