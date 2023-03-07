@@ -1,0 +1,40 @@
+- model: game.basestrategy
+  pk: leadership
+  fields:
+    label: Leadership
+    initiative: 1
+- model: game.basestrategy
+  pk: diplomacy
+  fields:
+    label: Diplomacy
+    initiative: 2
+- model: game.basestrategy
+  pk: politics
+  fields:
+    label: Politics
+    initiative: 3
+- model: game.basestrategy
+  pk: construction
+  fields:
+    label: Construction
+    initiative: 4
+- model: game.basestrategy
+  pk: trade
+  fields:
+    label: Trade
+    initiative: 5
+- model: game.basestrategy
+  pk: warfare
+  fields:
+    label: Warfare
+    initiative: 6
+- model: game.basestrategy
+  pk: technology
+  fields:
+    label: Technology
+    initiative: 7
+- model: game.basestrategy
+  pk: imperial
+  fields:
+    label: Imperial
+    initiative: 8

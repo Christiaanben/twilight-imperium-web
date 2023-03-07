@@ -34,27 +34,16 @@ class GameConsumer(AsyncWebsocketConsumer):
         logger.info(f"Received data: {data}")
         
         command_class = COMMANDS.get(data['type'])
-        command = command_class(data['kwargs'])
+        command = command_class(**data['kwargs'])
         events = await db_async(command.execute)(self.game, self.player)
         for event in events:
             await self.channel_layer.group_send(
                 self.game_channel,
-                event
+                {
+                    'type': 'broadcast',
+                    'event': event
+                }
             )
-        
-        # if data['type'] == 'select_strategy':
-        #     strategy = await db_async(status_phase_helper.select_strategy)(
-        #         player=self.player,
-        #         strategy_type=getattr(StrategyType, data['kwargs']['strategy'].upper())
-        #     )
-        #     await self.channel_layer.group_send(
-        #         self.game_channel,
-        #         {
-        #             'type': 'select_strategy',
-        #             'kwargs': {
-        #                 'type': strategy.type,
-        #             }
-        #         })
 
-    async def select_strategy(self, data):
-        await self.send(text_data=json.dumps(data))
+    async def broadcast(self, data):
+        await self.send(text_data=json.dumps(data.get('event')))

@@ -4,4 +4,5 @@ from .base_system import BaseSystem
 from .system import System
 from .base_planet import BasePlanet
 from .planet import Planet
+from .base_strategy import BaseStrategy
 from .strategy import Strategy
