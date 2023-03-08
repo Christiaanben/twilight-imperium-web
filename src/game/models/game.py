@@ -11,6 +11,7 @@ class Game(models.Model):
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    started_at = models.DateTimeField(null=True)
     # Foreign keys
     speaker = models.OneToOneField('game.Player', on_delete=models.SET_NULL, null=True, related_name='game_speaker')
     active_player = models.OneToOneField('game.Player', on_delete=models.SET_NULL, null=True, related_name='game_active_player')

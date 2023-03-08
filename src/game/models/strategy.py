@@ -16,4 +16,4 @@ class Strategy(models.Model):
         unique_together = [('game', 'base')]
 
     def __repr__(self):
-        return f'Strategy(id={self.id}, game_id={self.game_id}, player_id={self.player_id}, type={self.base_id})'
+        return f'Strategy(id={self.id}, game_id={self.game_id}, player_id={self.player_id}, base={self.base_id})'
