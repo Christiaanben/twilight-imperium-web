@@ -1,0 +1,81 @@
+- model: game.baseunit
+  pk: carrier_1
+  fields:
+    name: Carrier I
+    movement: 1
+    cost: 3
+    combat: 9
+    capacity: 4
+    type: carrier
+    faction: null
+- model: game.baseunit
+  pk: cruiser_1
+  fields:
+    name: Cruiser I
+    movement: 2
+    cost: 2
+    combat: 7
+    capacity: 0
+    type: cruiser
+    faction: null
+- model: game.baseunit
+  pk: destroyer_1
+  fields:
+    name: Destroyer I
+    movement: 2
+    cost: 1
+    combat: 9
+    capacity: 0
+    type: destroyer
+    faction: null
+- model: game.baseunit
+  pk: dreadnought_1
+  fields:
+    name: Dreadnought I
+    movement: 1
+    cost: 4
+    combat: 5
+    capacity: 1
+    type: dreadnought
+    faction: null
+- model: game.baseunit
+  pk: fighter_1
+  fields:
+    name: Fighter I
+    movement: 0
+    cost: 1
+    combat: 9
+    capacity: 0
+    type: fighter
+    faction: null
+- model: game.baseunit
+  pk: infantry_1
+  fields:
+    name: Infantry I
+    movement: 0
+    cost: 1
+    combat: 8
+    capacity: 0
+    type: infantry
+    faction: null
+- model: game.baseunit
+  pk: pds_1
+  fields:
+    name: PDS I
+    movement: 0
+    cost: 0
+    combat: 6
+    capacity: 0
+    type: pds
+    faction: null
+- model: game.baseunit
+  pk: space_dock_1
+  fields:
+    name: Space Dock I
+    movement: 0
+    cost: 0
+    combat: 0
+    capacity: 3
+    type: space_dock
+    faction: null
+  
