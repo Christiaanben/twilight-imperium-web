@@ -7,3 +7,4 @@ from .planet import Planet
 from .base_strategy import BaseStrategy
 from .strategy import Strategy
 from .base_unit import BaseUnit
+from .unit import Unit
