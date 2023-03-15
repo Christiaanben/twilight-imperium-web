@@ -1,9 +1,10 @@
 from rest_framework import serializers
 
 from game.models import Game
-from . import PlayerSerializer
+from .player_serializer import PlayerSerializer
 from .strategy_serializer import StrategySerializer
 from .system_serializer import SystemSerializer
+from .card_serializer import CardSerializer
 
 
 class GameSerializer(serializers.ModelSerializer):
@@ -14,3 +15,4 @@ class GameSerializer(serializers.ModelSerializer):
     systems = SystemSerializer(many=True)
     strategies = StrategySerializer(many=True)
     players = PlayerSerializer(many=True)
+    cards = CardSerializer(many=True)

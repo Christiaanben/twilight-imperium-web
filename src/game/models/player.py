@@ -25,7 +25,7 @@ class Player(models.Model):
         unique_together = [('user', 'game'), ('game', 'faction'), ('game', 'color')]
 
     def __repr__(self):
-        return f'Player(id={self.id}, user_id={self.user_id}, lobby_id={self.game_id})'
+        return f'Player(id={self.id}, user_id={self.user_id}, game_id={self.game_id})'
 
     def __str__(self):
         return repr(self)
