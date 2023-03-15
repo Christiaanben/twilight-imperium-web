@@ -1,0 +1,47 @@
+# Action Cards
+- model: game.basecard
+  pk: summit
+  fields:
+    name: Summit
+    type: action
+    victory_points: 0
+
+# Public Objective Stage 1 Cards
+- model: game.basecard
+  pk: negotiate_trade_routes
+  fields:
+    name: Negotiate Trade Routes
+    type: stage_1
+    victory_points: 1
+
+# Public Objective Stage 2 Cards
+- model: game.basecard
+  pk: centralize_galactic_trade
+  fields:
+    name: Centralize Galactic Trade
+    type: stage_2
+    victory_points: 2
+
+# Secret Objective Cards
+- model: game.basecard
+  pk: form_spy_network
+  fields:
+    name: Form a Spy Network
+    type: secret
+    victory_points: 1
+
+# Agenda Cards
+- model: game.basecard
+  pk: archived_secret
+  fields:
+    name: Archived Secret
+    type: agenda
+    victory_points: 0
+
+# Promissory Cards:
+- model: game.basecard
+  pk: trade_agreement
+  fields:
+    name: Trade Agreement
+    type: promissory
+    victory_points: 0

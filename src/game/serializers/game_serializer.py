@@ -3,6 +3,7 @@ from rest_framework import serializers
 from game.models import Game, Unit
 from .strategy_serializer import StrategySerializer
 from .system_serializer import SystemSerializer
+from .card_serializer import CardSerializer
 from .unit_serializer import UnitSerializer
 from .player_serializer import PlayerSerializer
 
@@ -10,11 +11,12 @@ from .player_serializer import PlayerSerializer
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = ['systems', 'phase', 'strategies', 'players', 'units']
+        fields = ['systems', 'phase', 'strategies', 'players', 'cards', 'units']
 
     systems = SystemSerializer(many=True)
     strategies = StrategySerializer(many=True)
     players = PlayerSerializer(many=True)
+    cards = CardSerializer(many=True)
     units = serializers.SerializerMethodField()
 
     @staticmethod
