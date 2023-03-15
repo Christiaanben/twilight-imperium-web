@@ -4,3 +4,4 @@ from .system_serializer import SystemSerializer
 from .game_serializer import GameSerializer
 from .planet_serializer import PlanetSerializer
 from .strategy_serializer import StrategySerializer
+from .unit_serializer import UnitSerializer
