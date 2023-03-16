@@ -10,3 +10,4 @@ from .base_unit import BaseUnit
 from .unit import Unit
 from .base_card import BaseCard
 from .card import Card
+from .faction import Faction

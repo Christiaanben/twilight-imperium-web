@@ -9,7 +9,7 @@ class BaseSystem(models.Model):
     # Fields
     faction = models.CharField(choices=Faction.choices,
                                max_length=max([len(v) for v in Faction.values]),
-                               default=None, null=True, blank=False)
+                               default=None, null=True, blank=True)
 
     class Meta:
         default_related_name = 'base_systems'

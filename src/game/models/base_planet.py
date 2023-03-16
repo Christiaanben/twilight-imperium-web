@@ -13,10 +13,10 @@ class BasePlanet(models.Model):
     influence = models.PositiveSmallIntegerField()
     trait = models.CharField(choices=PlanetTrait.choices,
                              max_length=max([len(v) for v in PlanetTrait.values]),
-                             default=None, null=True, blank=False)
+                             default=None, null=True, blank=True)
     technology = models.CharField(choices=TechnologyType.choices,
                                   max_length=max([len(v) for v in TechnologyType.values]),
-                                  default=None, null=True, blank=False)
+                                  default=None, null=True, blank=True)
 
     class Meta:
         default_related_name = 'base_planets'

@@ -1,0 +1,34 @@
+- model: game.faction
+  pk: sol
+  fields:
+    name: The Federation of Sol
+    starting_units:
+      - carrier
+      - carrier
+      - destroyer
+      - fighter
+      - fighter
+      - fighter
+      - infantry
+      - infantry
+      - infantry
+      - infantry
+      - infantry
+      - space_dock
+- model: game.faction
+  pk: xxcha
+  fields:
+    name: The Xxcha Kingdom
+    starting_units:
+      - carrier
+      - cruiser
+      - cruiser
+      - fighter
+      - fighter
+      - fighter
+      - infantry
+      - infantry
+      - infantry
+      - infantry
+      - space_dock
+      - pds

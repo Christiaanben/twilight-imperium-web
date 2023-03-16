@@ -15,7 +15,7 @@ class BaseUnit(models.Model):
     type = models.SlugField(choices=UnitType.choices, max_length=max([len(val) for val in UnitType.values]))
     faction = models.SlugField(choices=Faction.choices,
                                max_length=max([len(v) for v in Faction.values]),
-                               default=None, null=True, blank=False)
+                               default=None, null=True, blank=True)
 
     class Meta:
         default_related_name = 'base_units'

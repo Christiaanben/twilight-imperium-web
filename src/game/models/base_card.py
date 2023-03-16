@@ -4,7 +4,7 @@ from game.models.enums.card_type import CardType
 
 class BaseCard(models.Model):
     id = models.SlugField(max_length=30, primary_key=True)
-    name = models.SlugField(max_length=30)
+    name = models.CharField(max_length=30)
     type = models.SlugField(choices=CardType.choices,
                             max_length=max([len(card_name) for card_name in CardType.values]), null=False, blank=False)
     victory_points = models.PositiveSmallIntegerField(default=0)
