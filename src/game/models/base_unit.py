@@ -6,6 +6,8 @@ from .enums import UnitType, Faction
 class BaseUnit(models.Model):
     # Primary key
     id = models.SlugField(primary_key=True, max_length=30)
+    # Foreign keys
+    faction = models.ForeignKey('game.Faction', on_delete=models.SET_NULL, null=True, default=None)
     # Fields
     name = models.CharField(max_length=30, blank=False)
     movement = models.PositiveSmallIntegerField(default=0)
@@ -13,9 +15,6 @@ class BaseUnit(models.Model):
     combat = models.PositiveSmallIntegerField(default=0)
     capacity = models.PositiveSmallIntegerField(default=0)
     type = models.SlugField(choices=UnitType.choices, max_length=max([len(val) for val in UnitType.values]))
-    faction = models.SlugField(choices=Faction.choices,
-                               max_length=max([len(v) for v in Faction.values]),
-                               default=None, null=True, blank=True)
 
     class Meta:
         default_related_name = 'base_units'

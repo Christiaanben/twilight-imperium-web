@@ -7,12 +7,10 @@ class Player(models.Model):
     # Foreign keys
     user = models.ForeignKey('user.User', on_delete=models.CASCADE)
     game = models.ForeignKey('game.Game', on_delete=models.CASCADE, related_name='players')
+    faction = models.ForeignKey('game.Faction', on_delete=models.SET_NULL, null=True, default=None)
     # Timestamps
     created_at = models.DateTimeField(auto_now=True)
     # Fields
-    faction = models.CharField(choices=Faction.choices,
-                               max_length=max([len(v) for v in Faction.values]),
-                               default=None, null=True, blank=False)
     color = models.CharField(choices=PlayerColor.choices,
                              max_length=max([len(v) for v in PlayerColor.values]),
                              default=None, null=True, blank=False)
@@ -25,7 +23,7 @@ class Player(models.Model):
         unique_together = [('user', 'game'), ('game', 'faction'), ('game', 'color')]
 
     def __repr__(self):
-        return f'Player(id={self.id}, user_id={self.user_id}, game_id={self.game_id})'
+        return f'Player(id={self.id}, faction={self.faction_id} user_id={self.user_id}, game_id={self.game_id})'
 
     def __str__(self):
         return repr(self)
