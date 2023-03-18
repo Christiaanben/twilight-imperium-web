@@ -6,6 +6,8 @@ class DBTestCase(TestCase):
         # Seeds
         'game/fixtures/seeds/systems.yaml',
         'game/fixtures/seeds/planets.yaml',
+        'game/fixtures/seeds/factions.yaml',
+        'game/fixtures/seeds/units.yaml',
         # Tests
         'game/fixtures/tests/games.yaml',
     ]
