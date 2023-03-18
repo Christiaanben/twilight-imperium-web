@@ -1,4 +1,61 @@
 - model: game.faction
+  pk: hacan
+  fields:
+    name: The Emirates of Hacan
+    starting_units:
+      - carrier
+      - carrier
+      - cruiser
+      - fighter
+      - fighter
+      - infantry
+      - infantry
+      - infantry
+      - infantry
+      - space_dock
+- model: game.faction
+  pk: jol_nar
+  fields:
+    name: The Universities of Jol-Nar
+    starting_units:
+      - dreadnought
+      - carrier
+      - carrier
+      - fighter
+      - infantry
+      - infantry
+      - space_dock
+      - pds
+      - pds
+- model: game.faction
+  pk: letnev
+  fields:
+    name: The Barony of Letnev
+    starting_units:
+      - dreadnought
+      - carrier
+      - destroyer
+      - fighter
+      - infantry
+      - infantry
+      - infantry
+      - space_dock
+- model: game.faction
+  pk: sardakk_norr
+  fields:
+    name: Sardakk N'orr
+    starting_units:
+      - carrier
+      - carrier
+      - cruiser
+      - infantry
+      - infantry
+      - infantry
+      - infantry
+      - infantry
+      - space_dock
+      - pds
+- model: game.faction
   pk: sol
   fields:
     name: The Federation of Sol
