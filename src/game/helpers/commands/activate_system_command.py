@@ -1,5 +1,6 @@
 from app.settings import logger
 from game.models import Game, Player, System
+from game.serializers import SystemSerializer
 from .command import Command
 
 class ActivateSystemCommand(Command):
@@ -17,6 +18,6 @@ class ActivateSystemCommand(Command):
         return [
             {
                 'type': 'activate_system',
-                'kwargs': {}
+                'kwargs': SystemSerializer(system).data
             }
         ]
