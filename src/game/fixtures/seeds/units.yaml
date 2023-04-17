@@ -7,6 +7,7 @@
     combat: 9
     capacity: 4
     type: carrier
+    category: ship
     faction: null
 - model: game.baseunit
   pk: cruiser_1
@@ -17,6 +18,7 @@
     combat: 7
     capacity: 0
     type: cruiser
+    category: ship
     faction: null
 - model: game.baseunit
   pk: destroyer_1
@@ -27,6 +29,7 @@
     combat: 9
     capacity: 0
     type: destroyer
+    category: ship
     faction: null
 - model: game.baseunit
   pk: dreadnought_1
@@ -37,6 +40,7 @@
     combat: 5
     capacity: 1
     type: dreadnought
+    category: ship
     faction: null
 - model: game.baseunit
   pk: fighter_1
@@ -47,6 +51,7 @@
     combat: 9
     capacity: 0
     type: fighter
+    category: ship
     faction: null
 - model: game.baseunit
   pk: infantry_1
@@ -57,6 +62,7 @@
     combat: 8
     capacity: 0
     type: infantry
+    category: ground_force
     faction: null
 - model: game.baseunit
   pk: pds_1
@@ -67,6 +73,7 @@
     combat: 6
     capacity: 0
     type: pds
+    category: structure
     faction: null
 - model: game.baseunit
   pk: space_dock_1
@@ -77,5 +84,5 @@
     combat: 0
     capacity: 3
     type: space_dock
+    category: structure
     faction: null
-  

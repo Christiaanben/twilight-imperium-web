@@ -1,13 +1,13 @@
 from django.db import models
 
-from .enums import UnitType, Faction
+from .enums import UnitType, UnitCategory
 
 
 class BaseUnit(models.Model):
     # Primary key
     id = models.SlugField(primary_key=True, max_length=30)
     # Foreign keys
-    faction = models.ForeignKey('game.Faction', on_delete=models.SET_NULL, null=True, default=None)
+    faction = models.ForeignKey('game.Faction', on_delete=models.SET_NULL, null=True, default=None, blank=True)
     # Fields
     name = models.CharField(max_length=30, blank=False)
     movement = models.PositiveSmallIntegerField(default=0)
@@ -15,6 +15,7 @@ class BaseUnit(models.Model):
     combat = models.PositiveSmallIntegerField(default=0)
     capacity = models.PositiveSmallIntegerField(default=0)
     type = models.SlugField(choices=UnitType.choices, max_length=max([len(val) for val in UnitType.values]))
+    category = models.SlugField(choices=UnitCategory.choices, max_length=max([len(val) for val in UnitCategory.values]))
 
     class Meta:
         default_related_name = 'base_units'

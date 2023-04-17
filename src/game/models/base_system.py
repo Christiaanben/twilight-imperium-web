@@ -5,7 +5,7 @@ class BaseSystem(models.Model):
     # Primary key
     id = models.PositiveSmallIntegerField(primary_key=True)
     # Foreign keys
-    faction = models.ForeignKey('game.Faction', on_delete=models.SET_NULL, null=True, default=None)
+    faction = models.ForeignKey('game.Faction', on_delete=models.SET_NULL, null=True, default=None, blank=True)
 
     class Meta:
         default_related_name = 'base_systems'
