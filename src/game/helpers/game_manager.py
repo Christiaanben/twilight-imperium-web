@@ -2,6 +2,7 @@ from django.utils import timezone
 
 from app.settings import logger
 from game.models import Game, Strategy, BaseStrategy, BaseUnit, Unit, System
+from game.models.enums import UnitCategory
 
 
 def start_game(game_id: str):
@@ -29,8 +30,10 @@ def _create_units(game: Game):
     """
     for player in game.players.all():
         home_system = System.objects.get(base__faction=player.faction, game=game)
+        main_planet = home_system.planets.order_by('-base__resource').first()
         units = []
         for unit_type in player.faction.starting_units:
             base = BaseUnit.objects.get(type=unit_type)
-            units.append(Unit(base=base, owned_by=player, system=home_system))
+            planet = main_planet if UnitCategory.is_allowed_on_planets(base.category) else None
+            units.append(Unit(base=base, owned_by=player, system=home_system, planet=planet))
         Unit.objects.bulk_create(units)

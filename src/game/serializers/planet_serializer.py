@@ -6,8 +6,9 @@ from game.models import Planet
 class PlanetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Planet
-        fields = ['name', 'resource', 'influence', 'trait', 'technology']
+        fields = ['id', 'name', 'resource', 'influence', 'trait', 'technology']
 
+    id = serializers.CharField(source='base.id')
     name = serializers.CharField(source='base.name')
     resource = serializers.IntegerField(source='base.resource')
     influence = serializers.IntegerField(source='base.influence')
