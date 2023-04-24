@@ -18,6 +18,7 @@ class Faction(models.Model):
     # Fields
     name = models.CharField(max_length=40)
     starting_units = models.JSONField(blank=True, default=list, validators=[validate_unit_types])
+    n_commodities = models.IntegerField(default=2)
 
     class Meta:
         default_related_name = 'factions'
@@ -29,4 +30,3 @@ class Faction(models.Model):
 
     def __repr__(self):
         return f'Faction(id={self.id})'
-

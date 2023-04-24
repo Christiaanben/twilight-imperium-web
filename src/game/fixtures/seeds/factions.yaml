@@ -2,6 +2,7 @@
   pk: hacan
   fields:
     name: The Emirates of Hacan
+    n_commodities: 6
     starting_units:
       - carrier
       - carrier
@@ -17,6 +18,7 @@
   pk: jol_nar
   fields:
     name: The Universities of Jol-Nar
+    n_commodities: 4
     starting_units:
       - dreadnought
       - carrier
@@ -31,6 +33,7 @@
   pk: letnev
   fields:
     name: The Barony of Letnev
+    n_commodities: 2
     starting_units:
       - dreadnought
       - carrier
@@ -44,6 +47,7 @@
   pk: sardakk_norr
   fields:
     name: Sardakk N'orr
+    n_commodities: 3
     starting_units:
       - carrier
       - carrier
@@ -59,6 +63,7 @@
   pk: sol
   fields:
     name: The Federation of Sol
+    n_commodities: 4
     starting_units:
       - carrier
       - carrier
@@ -76,6 +81,7 @@
   pk: xxcha
   fields:
     name: The Xxcha Kingdom
+    n_commodities: 4
     starting_units:
       - carrier
       - cruiser
