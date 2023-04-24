@@ -15,6 +15,11 @@ class Player(models.Model):
                              max_length=max([len(v) for v in PlayerColor.values]),
                              default=None, null=True, blank=False)
     is_ready = models.BooleanField(default=False)
+    n_tactic_tokens = models.IntegerField(default=0)
+    n_fleet_tokens = models.IntegerField(default=0)
+    n_strategy_tokens = models.IntegerField(default=0)
+    n_trade_goods = models.IntegerField(default=0)
+    n_commodities = models.IntegerField(default=0)
 
     class Meta:
         default_related_name = 'players'
