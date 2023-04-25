@@ -9,5 +9,5 @@ class DBTestCase(TestCase):
         'game/fixtures/seeds/factions.yaml',
         'game/fixtures/seeds/units.yaml',
         # Tests
-        'game/fixtures/tests/games.yaml',
+        'game/fixtures/tests/users.yaml',
     ]

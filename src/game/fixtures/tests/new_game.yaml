@@ -1,0 +1,30 @@
+# Game
+- model: game.game
+  pk: new_game
+  fields:
+    created_at: 2022-01-01T00:00Z
+    updated_at: 2022-01-01T00:00Z
+
+# Players
+- model: game.player
+  pk: 1
+  fields:
+    created_at: 2022-01-01T00:00Z
+
+    game: new_game
+    faction: sol
+    user: 1
+
+    color: black
+
+# Players
+- model: game.player
+  pk: 2
+  fields:
+    created_at: 2022-01-01T00:00Z
+
+    game: new_game
+    faction: hacan
+    user: 2
+
+    color: yellow

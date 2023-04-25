@@ -1,0 +1,11 @@
+- model: user.user
+  pk: 1
+  fields:
+    email: user1@gmail.com
+    display_name: User 1
+
+- model: user.user
+  pk: 2
+  fields:
+    email: user2@gmail.com
+    display_name: User 2
