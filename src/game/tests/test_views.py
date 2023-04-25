@@ -22,8 +22,10 @@ class LobbyViewTests(TestCase):
 
 class GameViewTests(DBTestCase):
 
+    fixtures = DBTestCase.fixtures + ['game/fixtures/tests/new_game.yaml']
+
     def test_get_game(self):
         # Execute
-        response = self.client.get(reverse('game-detail', kwargs={'pk': 'game0001'}))
+        response = self.client.get(reverse('game-detail', kwargs={'pk': 'new_game'}))
         # Assert
         self.assertEquals(response.status_code, 200)

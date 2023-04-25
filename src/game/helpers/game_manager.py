@@ -12,6 +12,7 @@ def start_game(game_id: str):
     game.speaker = game.players.order_by('?').first()
     game.save()
     _create_strategies(game)
+    _init_players_tokens(game)
     _create_units(game)
     # board_helper.generate_board(game)
     # GameConsumer.create_new_game(game_id)
@@ -21,6 +22,14 @@ def _create_strategies(game: Game):
     strategies = [Strategy(game=game, base=base) for base in BaseStrategy.objects.all()]
     Strategy.objects.bulk_create(strategies)
 
+
+def _init_players_tokens(game: Game):
+    logger.info(f'Initializing players tokens for {game.id}')
+    game.players.update(
+        n_tactic_tokens=3,
+        n_fleet_tokens=3,
+        n_strategy_tokens=2,
+    )
 
 def _create_units(game: Game):
     """
