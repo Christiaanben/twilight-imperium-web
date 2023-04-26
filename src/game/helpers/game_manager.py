@@ -1,21 +1,20 @@
 from django.utils import timezone
 
 from app.settings import logger
+from game.helpers import board_helper
 from game.models import Game, Strategy, BaseStrategy, BaseUnit, Unit, System
 from game.models.enums import UnitCategory
 
 
-def start_game(game_id: str):
-    logger.info(f'Starting a new game for {game_id}')
-    game = Game.objects.get(id=game_id)
+def start_game(game: Game):
+    logger.info(f'Starting a new game for {game}')
     game.started_at = timezone.now()
     game.speaker = game.players.order_by('?').first()
     game.save()
+    board_helper.generate_board(game)
     _create_strategies(game)
     _init_players_tokens(game)
     _create_units(game)
-    # board_helper.generate_board(game)
-    # GameConsumer.create_new_game(game_id)
 
 
 def _create_strategies(game: Game):

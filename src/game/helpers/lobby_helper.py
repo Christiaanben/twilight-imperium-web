@@ -1,7 +1,7 @@
 from channels.db import database_sync_to_async
 
 from app.settings import logger
-from game.helpers import board_helper
+from game.helpers import board_helper, game_manager
 from game.models import Player, Game, System
 from game.serializers import PlayerSerializer, GameSerializer
 
@@ -33,7 +33,11 @@ def handle_update_player(user_id: str, player_kwargs):
     player = Player.objects.get(id=player_kwargs['id'])
     serializer = PlayerSerializer(player, data=player_kwargs)
     serializer.is_valid(raise_exception=True)
-    serializer.save()
+    player = serializer.save()
+    if player.is_ready:
+        events = _handle_player_ready(player)
+        if events:
+            return events
     return [
         {
             'type': 'update_player',
@@ -44,13 +48,14 @@ def handle_update_player(user_id: str, player_kwargs):
     ]
 
 
-@database_sync_to_async
-def handle_new_game(game_id: str):
-    game = Game.objects.get(id=game_id)
-    board_helper.generate_board(game)
+def _handle_player_ready(player: Player):
+    is_all_ready = all(player.game.players.values_list('is_ready', flat=True))
+    if not is_all_ready:
+        return []
+    game_manager.start_game(player.game)
     return [{
         'type': 'new_game',
         'kwargs': {
-            'game': GameSerializer(game).data
+            'game': GameSerializer(player.game).data
         }
     }]

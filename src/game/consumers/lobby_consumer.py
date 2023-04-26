@@ -53,7 +53,7 @@ class LobbyConsumer(AsyncWebsocketConsumer):
 
     async def update_player(self, data):
         await self.send(text_data=json.dumps(data))
-        
+
     async def new_game(self, data):
         await self.send(text_data=json.dumps(data))
 
@@ -63,13 +63,3 @@ class LobbyConsumer(AsyncWebsocketConsumer):
 
         # Send message to WebSocket
         await self.send(text_data=json.dumps({'message': message}))
-    
-    @staticmethod
-    async def create_new_game(lobby_id: str):
-        logger.info(f'Starting a new game for {lobby_id}')
-        events = await lobby_helper.handle_new_game(lobby_id)
-        await db_async(game_manager.start_game)(lobby_id)
-        for event in events:
-            await get_channel_layer().group_send(
-                f'lobby_{lobby_id}', event
-            )
