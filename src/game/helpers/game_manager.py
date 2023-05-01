@@ -1,8 +1,7 @@
 from django.utils import timezone
-
 from app.settings import logger
+from game.models import Game, Strategy, BaseStrategy, BaseUnit, Unit, System, BaseCard, Card
 from game.helpers import board_helper
-from game.models import Game, Strategy, BaseStrategy, BaseUnit, Unit, System
 from game.models.enums import UnitCategory
 
 
@@ -15,6 +14,7 @@ def start_game(game: Game):
     _create_strategies(game)
     _init_players_tokens(game)
     _create_units(game)
+    _create_starting_objectives(game)
 
 
 def _create_strategies(game: Game):
@@ -45,3 +45,16 @@ def _create_units(game: Game):
             planet = main_planet if UnitCategory.is_allowed_on_planets(base.category) else None
             units.append(Unit(base=base, owned_by=player, system=home_system, planet=planet))
         Unit.objects.bulk_create(units)
+
+
+def _create_starting_objectives(game: Game):
+    """
+    Create first 2 starting objectives.
+    :param game: Game
+    :return:
+    """
+    picked_objectives = []
+    for base_objective in BaseCard.objects.filter(type='stage_1').order_by("?")[:2]:
+        picked_objectives.append(Card(base=base_objective, game=game))
+    Card.objects.bulk_create(picked_objectives)
+
