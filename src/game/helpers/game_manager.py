@@ -1,8 +1,8 @@
 from django.utils import timezone
 from app.settings import logger
-from game.models import Game, Strategy, BaseStrategy, BaseUnit, Unit, System, BaseCard, Card
 from game.helpers import board_helper
 from game.models.enums import UnitCategory
+from game.models import Game, Strategy, BaseStrategy, BaseUnit, Unit, System, BaseCard, Card
 
 
 def start_game(game: Game):
