@@ -32,3 +32,7 @@ class Player(models.Model):
 
     def __str__(self):
         return repr(self)
+
+    @property
+    def n_victory_points(self) -> int:
+        return 0
