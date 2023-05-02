@@ -14,6 +14,20 @@
     type: stage_1
     victory_points: 1
 
+- model: game.basecard
+  pk: lead_from_the_front
+  fields:
+    name: Lead From The Front
+    type: stage_1
+    victory_points: 1
+
+- model: game.basecard
+  pk: expand_borders
+  fields:
+    name: Expand Borders
+    type: stage_1
+    victory_points: 1
+
 # Public Objective Stage 2 Cards
 - model: game.basecard
   pk: centralize_galactic_trade
