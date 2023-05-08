@@ -11,8 +11,8 @@ class BaseCard(models.Model):
     trigger = models.SlugField(choices=CardTrigger.choices,
         max_length=max([len(trigger) for trigger in CardTrigger.values]), null=True, blank=True)
     subtitle = models.CharField(max_length=30, blank=True, default='')
-    body = models.CharField(max_length=200, blank=True, default='')
-    flavor = models.CharField(max_length=200, blank=True, default='')
+    body = models.CharField(max_length=255, blank=True, default='')
+    flavor = models.CharField(max_length=255, blank=True, default='')
     victory_points = models.PositiveSmallIntegerField(default=0)
 
     class Meta:
