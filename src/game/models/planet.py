@@ -5,6 +5,7 @@ class Planet(models.Model):
     # Foreign keys
     system = models.ForeignKey('game.System', on_delete=models.CASCADE)
     base = models.ForeignKey('game.BasePlanet', on_delete=models.CASCADE)
+    owned_by = models.ForeignKey('game.Player', on_delete=models.CASCADE, null=True, blank=True)
     # Fields
     is_exhausted = models.BooleanField(default=True)
 
