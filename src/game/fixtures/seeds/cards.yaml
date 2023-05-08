@@ -1,9 +1,24 @@
 # Action Cards
 - model: game.basecard
+  pk: industrial_initiative
+  fields:
+    name: Industrial Initiative
+    type: action
+    trigger: action
+    subtitle: ''
+    body: As an Action:\n\nGain 1 trade good for each industrial planet you control.
+    flavor: The Gashlai reactors proved to be extremely effective. With the conversion rate practically doubled, the factories' output was immense.
+    victory_points: 0
+
+- model: game.basecard
   pk: summit
   fields:
     name: Summit
     type: action
+    trigger: start_of_strategy_phase
+    subtitle: ''
+    body: At the start of the strategy phase:\n\nGain 2 command tokens.
+    flavor: At the end of the twelfth day, Rev returned home from the summit in New Moscow feeling physically exhausted and mentally drained. But she was also satisfied. They had a plan - finally - and it was a good plan.
     victory_points: 0
 
 # Public Objective Stage 1 Cards
@@ -12,6 +27,10 @@
   fields:
     name: Negotiate Trade Routes
     type: stage_1
+    trigger: null
+    subtitle: Status Phase
+    body: Spend 5 trade goods.
+    flavor: ''
     victory_points: 1
 
 - model: game.basecard
@@ -19,6 +38,10 @@
   fields:
     name: Lead From The Front
     type: stage_1
+    trigger: null
+    subtitle: Status Phase
+    body: Spend a total of 3 tokens from your tactic and/or strategy pools.
+    flavor: ''
     victory_points: 1
 
 - model: game.basecard
@@ -26,6 +49,10 @@
   fields:
     name: Expand Borders
     type: stage_1
+    trigger: null
+    subtitle: Status Phase
+    body: Control 6 planets in non-home systems.
+    flavor: ''
     victory_points: 1
 
 # Public Objective Stage 2 Cards
@@ -34,6 +61,10 @@
   fields:
     name: Centralize Galactic Trade
     type: stage_2
+    trigger: null
+    subtitle: Status Phase
+    body: Spend 10 trade goods.
+    flavor: ''
     victory_points: 2
 
 # Secret Objective Cards
@@ -42,6 +73,10 @@
   fields:
     name: Form a Spy Network
     type: secret
+    trigger: null
+    subtitle: Status Phase
+    body: Discard 5 Action Cards.
+    flavor: ''
     victory_points: 1
 
 # Agenda Cards
@@ -50,6 +85,10 @@
   fields:
     name: Archived Secret
     type: agenda
+    trigger: null
+    subtitle: Directive
+    body: Elect a player. The elected player draws 1 secret objective.
+    flavor: ''
     victory_points: 0
 
 # Promissory Cards:
@@ -58,4 +97,8 @@
   fields:
     name: Trade Agreement
     type: promissory
+    trigger: null
+    subtitle: ''
+    body: When the (color) player replenishes commodities:\n\nThe (color) player gives you all of their commodities.\n\nThen, return this card to the (color) player.
+    flavor: ''
     victory_points: 0

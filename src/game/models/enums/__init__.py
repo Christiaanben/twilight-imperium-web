@@ -5,3 +5,5 @@ from .technology_type import TechnologyType
 from .phase import Phase
 from .unit_type import UnitType
 from .unit_category import UnitCategory
+from .card_type import CardType
+from .card_trigger import CardTrigger

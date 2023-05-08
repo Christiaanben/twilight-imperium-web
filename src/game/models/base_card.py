@@ -1,5 +1,6 @@
 from django.db import models
-from game.models.enums.card_type import CardType
+
+from .enums import CardType, CardTrigger
 
 
 class BaseCard(models.Model):
@@ -7,6 +8,11 @@ class BaseCard(models.Model):
     name = models.CharField(max_length=30)
     type = models.SlugField(choices=CardType.choices,
                             max_length=max([len(card_name) for card_name in CardType.values]), null=False, blank=False)
+    trigger = models.SlugField(choices=CardTrigger.choices,
+        max_length=max([len(trigger) for trigger in CardTrigger.values]), null=True, blank=True)
+    subtitle = models.CharField(max_length=30, blank=True, default='')
+    body = models.CharField(max_length=200, blank=True, default='')
+    flavor = models.CharField(max_length=200, blank=True, default='')
     victory_points = models.PositiveSmallIntegerField(default=0)
 
     class Meta:
