@@ -17,7 +17,6 @@
 
     color: black
 
-# Players
 - model: game.player
   pk: 2
   fields:

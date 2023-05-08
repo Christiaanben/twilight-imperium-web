@@ -1,7 +1,7 @@
 from typing import List
 
 from app.settings import logger
-from game.models import Game, System, BasePlanet, Planet, BaseSystem
+from game.models import Game, Player, System, BasePlanet, Planet, BaseSystem
 
 DEFAULT_BOARDS = {
     1: [
@@ -105,4 +105,7 @@ def generate_board(game: Game):
 
 def _init_planet(systems: List[System], base_planet: BasePlanet) -> Planet:
     system = [system for system in systems if system.base_id == base_planet.base_system_id][0]
-    return Planet(base=base_planet, system=system)
+    player = None
+    if system.base.faction is not None:
+        player = Player.objects.get(game=system.game, faction=system.base.faction)
+    return Planet(base=base_planet, system=system, owned_by=player)
