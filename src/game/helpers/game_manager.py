@@ -1,7 +1,7 @@
 from django.utils import timezone
 from app.settings import logger
 from game.helpers import board_helper
-from game.models.enums import UnitCategory
+from game.models.enums import UnitCategory, CardType
 from game.models import Game, Strategy, BaseStrategy, BaseUnit, Unit, System, BaseCard, Card
 
 
@@ -14,7 +14,23 @@ def start_game(game: Game):
     _create_strategies(game)
     _init_players_tokens(game)
     _create_units(game)
+    _create_starting_cards(game)
+
+def _create_starting_cards(game: Game):
     _create_starting_objectives(game)
+    _create_starting_promissory_notes(game)
+
+def _create_starting_promissory_notes(game: Game):
+    """
+    Create the starting promissory notes for each player
+    :param game: Game
+    :return:
+    """
+    cards = []
+    for player in game.players.all():
+        for base_card in BaseCard.objects.filter(type=CardType.PROMISSORY):
+            cards.append(Card(base=base_card, game=game, owned_by=player))
+    Card.objects.bulk_create(cards)
 
 
 def _create_strategies(game: Game):
@@ -57,4 +73,3 @@ def _create_starting_objectives(game: Game):
     for base_objective in BaseCard.objects.filter(type='stage_1').order_by("?")[:2]:
         picked_objectives.append(Card(base=base_objective, game=game))
     Card.objects.bulk_create(picked_objectives)
-
