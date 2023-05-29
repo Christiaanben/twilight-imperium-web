@@ -5,8 +5,9 @@ from game.models import Card
 class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
-        fields = ('name', 'type', 'subtitle', 'body', 'flavor', 'victory_points', 'owned_by')
+        fields = ('id', 'name', 'type', 'subtitle', 'body', 'flavor', 'victory_points', 'owned_by')
 
+    id = serializers.CharField(source='base.id')
     name = serializers.CharField(source='base.name')
     type = serializers.CharField(source='base.type')
     subtitle = serializers.CharField(source='base.subtitle')
