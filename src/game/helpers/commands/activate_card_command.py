@@ -1,6 +1,7 @@
 from app.settings import logger
 from .command import Command
 from game.models import Game, Player
+from game.serializers import PlayerSerializer
 
 
 class ActivateCardCommand(Command):
@@ -15,7 +16,7 @@ class ActivateCardCommand(Command):
             player.save()
         return [
             {
-                'type': 'activate_card',
-                'kwargs': {}
+                'type': 'update_player',
+                'kwargs': PlayerSerializer(player).data
             }
         ]
