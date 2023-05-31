@@ -10,5 +10,12 @@ class ActivateCardCommand(Command):
 
     def execute(self, game: Game, player: Player):
         logger.info(f"Activate card: {self.card_id} for player: {player} in game: {game}")
-        # TODO: implement logic
-        return []
+        if self.card_id == 'industrial_initiative':
+            player.n_trade_goods += 1
+            player.save()
+        return [
+            {
+                'type': 'activate_card',
+                'kwargs': {}
+            }
+        ]
